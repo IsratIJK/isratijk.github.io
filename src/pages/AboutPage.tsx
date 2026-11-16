@@ -30,7 +30,6 @@ const AboutPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/about" />
       </Helmet>
       <PageHero
-        graphic="about"
         label="About"
         title="Israt Jahan Khan"
         subtitle={`${profile.role} · ${profile.institution}, ${profile.location}`}

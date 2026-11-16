@@ -1,3 +1,4 @@
+import { type CSSProperties } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -46,26 +47,26 @@ const NetworkGraphic = () => {
   ];
   const xs = [14, 42, 70, 92];
   const active = [[1], [1, 2], [1], [0]];
+  const layerFill = ["fill-gold", "fill-viz-violet", "fill-viz-teal", "fill-viz-amber"];
   return (
-    <svg viewBox="0 0 106 100" className="w-full h-auto" aria-hidden="true">
+    <svg viewBox="0 0 106 100" className="w-full h-auto overflow-visible" aria-hidden="true">
       {layers.slice(0, -1).map((layer, li) =>
         layer.flatMap((y1, i) =>
           layers[li + 1].map((y2, j) => {
             const on = active[li].includes(i) && active[li + 1].includes(j);
-            return (
-              <line
-                key={`${li}-${i}-${j}`}
-                x1={xs[li]}
-                y1={y1}
-                x2={xs[li + 1]}
-                y2={y2}
-                className={on ? "stroke-gold" : "stroke-border"}
-                strokeWidth={on ? 1.1 : 0.6}
-              />
+            const line = { x1: xs[li], y1, x2: xs[li + 1], y2 };
+            return on ? (
+              <g key={`${li}-${i}-${j}`}>
+                <line {...line} className="stroke-gold/35" strokeWidth={1.1} />
+                <line {...line} className="stroke-gold hg-flow" strokeWidth={1.2} style={{ "--d": `${li * 300}ms` } as CSSProperties} />
+              </g>
+            ) : (
+              <line key={`${li}-${i}-${j}`} {...line} className="stroke-border" strokeWidth={0.6} />
             );
           }),
         ),
       )}
+      <circle cx={xs[3]} cy={50} r={6} className="fill-viz-amber/40 hg-pulse" />
       {layers.map((layer, li) =>
         layer.map((y, i) => (
           <circle
@@ -73,7 +74,7 @@ const NetworkGraphic = () => {
             cx={xs[li]}
             cy={y}
             r={active[li].includes(i) ? 4 : 3.2}
-            className={active[li].includes(i) ? "fill-gold" : "fill-card stroke-border"}
+            className={active[li].includes(i) ? layerFill[li] : "fill-card stroke-border"}
             strokeWidth={0.8}
           />
         )),
