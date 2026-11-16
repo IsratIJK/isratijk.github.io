@@ -1,0 +1,10 @@
+{
+  "agentsJson": "1.0.0",
+  "info": {
+    "title": "Israt Jahan Khan - Academic Portfolio",
+    "version": "1.0.0",
+    "description": "Static, read-only academic portfolio. No API, actions, or authentication. Agents can read the profile summary at https://isratijk.github.io/llms.txt, full content at https://isratijk.github.io/llms-full.txt, every page at https://isratijk.github.io/sitemap.md, and usage guidance at https://isratijk.github.io/AGENTS.md. Structured data (Person, WebSite, ScholarlyArticle) is in the homepage JSON-LD."
+  },
+  "sources": [],
+  "flows": []
+}

@@ -2,6 +2,12 @@
 
 Architectural and structural changes. Content-only edits (new publications, gallery items, etc.) are not listed.
 
+## [Unreleased]
+
+### Agent discoverability
+- **`/.well-known/agents.json`** capability manifest. Declares the site as static and read-only: `sources` and `flows` are empty because there is no API, and the description points agents to `llms.txt`, `llms-full.txt`, `sitemap.md`, `AGENTS.md` and the homepage JSON-LD. Listed in `sitemap.md`.
+- `.agents/`, `.claude/` and `skills-lock.json` are no longer tracked and are now in `.gitignore`. They are per-machine editor tooling; they were committed by mistake in 1.0.0.
+
 ## [1.1.0] - 2026-11-16
 
 ### Agent discoverability

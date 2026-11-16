@@ -25,3 +25,4 @@
 - [ai.txt](https://isratijk.github.io/ai.txt): AI training and usage permissions
 - [API catalog](https://isratijk.github.io/.well-known/api-catalog): RFC 9727 linkset
 - [Agent skills](https://isratijk.github.io/.well-known/agent-skills/index.json): agent skills index
+- [agents.json](https://isratijk.github.io/.well-known/agents.json): capability manifest (read-only, no API)
