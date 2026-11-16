@@ -58,3 +58,8 @@ coverage/
 
 # Misc
 *.local
+
+# Local AI-agent tooling (skills installed per machine)
+.agents/
+.claude/
+skills-lock.json
