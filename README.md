@@ -5,7 +5,7 @@
 > - All media formerly on `cdn.isratjahankhan.com` lives in `public/images/` and `public/pdfs/` (`VITE_CDN_BASE_URL` is set in `.env.production` / `.env.development`).
 > - Site URLs point to `https://isratijk.github.io`.
 > - Vercel Analytics, Speed Insights and the Umami proxy are removed (they need Vercel rewrites).
-> - `.github/workflows/deploy.yml` builds and deploys to Pages; `scripts/spa-fallback.mjs` writes `dist/<route>/index.html` and `dist/404.html` for client-side routing.
+> - `.github/workflows/deploy.yml` builds and deploys to Pages; `scripts/prerender.mjs` renders every route in headless Chrome to `dist/<route>.html` (full HTML for crawlers and AI agents that don't run JavaScript, with per-page title, description and canonical) and writes the app shell to `dist/404.html`.
 > - `vercel.json`, `functions/` and `public/_headers` are kept but unused on GitHub Pages.
 
 Personal academic portfolio website for **Israt Jahan Khan**, a prospective PhD student and researcher in Machine Learning, Computer Vision, and Artificial Intelligence. M.Sc. student at BRAC University and former Lecturer at United International University, Dhaka, Bangladesh. 

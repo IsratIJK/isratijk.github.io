@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Digits-only face (unicode-range), listed first in every font stack so 0-9 render in IBM Plex Sans while letters keep their font. */
-@font-face {
-  font-family: "Digits";
-  src: url("./assets/fonts/plex-sans-digits.woff2") format("woff2");
-  font-weight: 100 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0030-0039;
-}
-
 img {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
@@ -53,9 +43,14 @@ img {
 
     --radius: 0.5rem;
 
+    /* Motion */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
     /* Brand tokens */
     --gold: 221 83% 50%;
     --gold-light: 221 83% 68%;
+    --gold-foreground: 0 0% 100%;
     --navy: 222 47% 11%;
     --navy-dark: 222 47% 7%;
     --slate: 215 20% 44%;
@@ -73,9 +68,9 @@ img {
     --shadow-page: 0 8px 40px -12px hsl(222 47% 11% / 0.12);
 
     /* Fonts */
-    --font-display: 'Digits', 'Playfair Display', Georgia, serif;
-    --font-body: 'Digits', 'Inter', system-ui, sans-serif;
-    --font-mono: 'Digits', 'Space Mono', 'Courier New', monospace;
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Source Sans 3', system-ui, sans-serif;
+    --font-mono: 'Source Code Pro', ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 222 47% 11%;
@@ -89,44 +84,47 @@ img {
   }
 
   .dark {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 96%;
+    /* Neutral, low-saturation surfaces so the blue accent is the only strong hue. */
+    --background: 225 16% 6%;
+    --foreground: 220 20% 97%;
 
-    --card: 222 47% 8%;
-    --card-foreground: 210 40% 96%;
+    --card: 225 13% 11%;
+    --card-foreground: 220 20% 97%;
 
-    --popover: 222 47% 8%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 225 13% 11%;
+    --popover-foreground: 220 20% 97%;
 
     --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
+    --primary-foreground: 225 16% 8%;
 
-    --secondary: 222 47% 13%;
+    --secondary: 225 11% 17%;
     --secondary-foreground: 210 40% 96%;
 
-    --muted: 222 47% 13%;
-    --muted-foreground: 215 20% 58%;
+    --muted: 225 11% 17%;
+    --muted-foreground: 220 9% 72%;
 
-    --accent: 222 47% 13%;
+    --accent: 225 11% 17%;
     --accent-foreground: 210 40% 96%;
 
     --destructive: 0 62% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 47% 17%;
-    --input: 222 47% 17%;
+    --border: 225 10% 24%;
+    --input: 225 10% 24%;
     --ring: 221 83% 58%;
 
-    --gold: 221 83% 62%;
-    --gold-light: 221 83% 75%;
+    --gold: 221 90% 68%;
+    --gold-light: 221 90% 78%;
+    --gold-foreground: 225 30% 7%;
     --navy: 210 40% 90%;
     --navy-dark: 210 40% 95%;
-    --slate: 215 20% 58%;
-    --cream: 222 47% 8%;
+    --slate: 220 9% 65%;
+    --cream: 225 14% 9%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(222 47% 5%) 0%, hsl(222 47% 8%) 100%);
-    --shadow-soft: 0 1px 3px 0 hsl(0 0% 0% / 0.20), 0 4px 16px -4px hsl(0 0% 0% / 0.30);
-    --shadow-card: 0 4px 24px -8px hsl(0 0% 0% / 0.35), 0 1px 4px hsl(0 0% 0% / 0.20);
+    --gradient-hero: linear-gradient(135deg, hsl(225 16% 6%) 0%, hsl(225 14% 9%) 100%);
+    /* Shadows barely read on near-black, so lift surfaces with a faint top highlight too. */
+    --shadow-soft: inset 0 1px 0 hsl(0 0% 100% / 0.04), 0 1px 3px 0 hsl(0 0% 0% / 0.40), 0 4px 16px -4px hsl(0 0% 0% / 0.50);
+    --shadow-card: inset 0 1px 0 hsl(0 0% 100% / 0.05), 0 8px 28px -8px hsl(0 0% 0% / 0.60), 0 1px 4px hsl(0 0% 0% / 0.40);
 
     --sidebar-background: 222 47% 7%;
     --sidebar-foreground: 210 40% 96%;
@@ -147,15 +145,20 @@ img {
 
   html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2 {
     font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    text-wrap: balance;
   }
 
   h3, h4, h5, h6 {
@@ -215,8 +218,8 @@ img {
 
   .section-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: hsl(var(--gold));
     font-weight: 600;
@@ -234,9 +237,9 @@ img {
   .dark .page-hero-bg {
     background: linear-gradient(
       135deg,
-      hsl(222 47% 6%) 0%,
-      hsl(222 47% 8%) 50%,
-      hsl(222 47% 6%) 100%
+      hsl(225 16% 7%) 0%,
+      hsl(225 14% 10%) 50%,
+      hsl(225 16% 7%) 100%
     );
   }
 
@@ -249,7 +252,7 @@ img {
   }
 
   .publication-cover {
-    @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-105;
+    @apply w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03];
   }
 }
 
@@ -257,7 +260,7 @@ img {
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -273,6 +276,16 @@ img {
 @keyframes fade-out {
   from { opacity: 1; }
   to { opacity: 0; }
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes menu-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-4px); }
 }
 
 @keyframes slide-in-left {
@@ -297,15 +310,24 @@ img {
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fade-in-up 0.5s var(--ease-out) forwards;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
+  animation: fade-in 0.5s var(--ease-out) forwards;
 }
 
 .animate-fade-out {
-  animation: fade-out 0.2s ease-in forwards;
+  animation: fade-out 0.15s var(--ease-out) forwards;
+}
+
+/* Mobile menu: enter 200ms, exit faster at 150ms */
+.animate-menu-in {
+  animation: menu-in 0.2s var(--ease-out) forwards;
+}
+
+.animate-menu-out {
+  animation: menu-out 0.15s var(--ease-out) forwards;
 }
 
 .animate-slide-in-left {
@@ -328,3 +350,29 @@ img {
 .animation-delay-400 { animation-delay: 400ms; }
 .animation-delay-500 { animation-delay: 500ms; }
 .animation-delay-600 { animation-delay: 600ms; }
+
+/* Reduced motion: keep fades that aid comprehension, drop movement. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-in-up,
+  .animate-slide-in-left,
+  .animate-menu-in {
+    animation: fade-in 0.2s ease forwards;
+  }
+
+  .animate-menu-out {
+    animation: fade-out 0.15s ease forwards;
+  }
+
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* Dark mode: give every card a faint top edge so it reads as raised even without hover. */
+:where(.dark) .bg-card {
+  box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.05);
+}

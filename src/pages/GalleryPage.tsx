@@ -38,10 +38,10 @@ const GalleryImage = ({ item, onClick }: { item: GalleryItem; onClick: () => voi
         onError={() => setHasError(true)}
         loading="lazy"
         decoding="async"
-        className="absolute inset-0 w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 group-data-[touched=true]:scale-105"
+        className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03] group-data-[touched=true]:scale-[1.03]"
       />
-      <div className="absolute inset-0 bg-black/0 [@media(hover:none)]:bg-gradient-to-t [@media(hover:none)]:from-black/60 [@media(hover:none)]:via-transparent [@media(hover:none)]:to-transparent group-hover:bg-black/45 group-data-[touched=true]:bg-black/45 transition-all duration-300 rounded-xl flex items-end">
-        <div className="p-4 w-full translate-y-2 opacity-0 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100 group-hover:translate-y-0 group-data-[touched=true]:translate-y-0 group-hover:opacity-100 group-data-[touched=true]:opacity-100 transition-all duration-300">
+      <div className="absolute inset-0 bg-black/0 [@media(hover:none)]:bg-gradient-to-t [@media(hover:none)]:from-black/60 [@media(hover:none)]:via-transparent [@media(hover:none)]:to-transparent group-hover:bg-black/45 group-data-[touched=true]:bg-black/45 transition duration-200 rounded-xl flex items-end">
+        <div className="p-4 w-full translate-y-2 opacity-0 [@media(hover:none)]:translate-y-0 [@media(hover:none)]:opacity-100 group-hover:translate-y-0 group-data-[touched=true]:translate-y-0 group-hover:opacity-100 group-data-[touched=true]:opacity-100 transition duration-200">
           <p className="text-white text-sm font-medium leading-tight">{item.title}</p>
           <span className="text-white/65 text-xs font-mono">{item.category}</span>
         </div>
@@ -77,8 +77,8 @@ const GalleryVideo = ({ item, onClick }: { item: GalleryItem; onClick: () => voi
         )}
 
         {/* Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/50 group-data-[touched=true]:bg-black/50 transition-all duration-300">
-          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 group-data-[touched=true]:scale-110 transition-transform duration-300">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/25 group-hover:bg-black/50 group-data-[touched=true]:bg-black/50 transition duration-200">
+          <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 group-data-[touched=true]:scale-110 transition-transform duration-200">
             <Play size={22} className="text-zinc-900 ml-1" fill="currentColor" />
           </div>
         </div>
@@ -138,7 +138,7 @@ const Lightbox = ({
               </div>
               <button
                 onClick={onClose}
-                className="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 data-[touched=true]:bg-white/15 flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 data-[touched=true]:bg-white/15 flex items-center justify-center transition-colors active:scale-[0.97]"
                 aria-label="Close"
               >
                 <X size={16} className="text-white/70" />
@@ -172,7 +172,7 @@ const Lightbox = ({
               {hasPrev && (
                 <button
                   onClick={onPrev}
-                  className="absolute left-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 data-[touched=true]:bg-black/70 border border-white/10 flex items-center justify-center transition-all hover:scale-105 data-[touched=true]:scale-105"
+                  className="absolute left-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 data-[touched=true]:bg-black/70 border border-white/10 flex items-center justify-center transition hover:scale-105 data-[touched=true]:scale-105 active:scale-[0.97]"
                   aria-label="Previous"
                 >
                   <ChevronLeft size={20} className="text-white" />
@@ -183,7 +183,7 @@ const Lightbox = ({
               {hasNext && (
                 <button
                   onClick={onNext}
-                  className="absolute right-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 data-[touched=true]:bg-black/70 border border-white/10 flex items-center justify-center transition-all hover:scale-105 data-[touched=true]:scale-105"
+                  className="absolute right-3 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 data-[touched=true]:bg-black/70 border border-white/10 flex items-center justify-center transition hover:scale-105 data-[touched=true]:scale-105 active:scale-[0.97]"
                   aria-label="Next"
                 >
                   <ChevronRight size={20} className="text-white" />
@@ -266,6 +266,7 @@ const GalleryPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/gallery" />
       </Helmet>
       <PageHero
+        graphic="gallery"
         label="Media"
         title="Gallery"
         subtitle="Research presentations, conference highlights, and behind-the-scenes moments."
@@ -284,7 +285,7 @@ const GalleryPage = () => {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                    className={`px-4 py-1.5 rounded-lg text-sm font-medium transition active:scale-[0.97] ${
                       activeCategory === cat
                         ? "bg-background text-foreground shadow-soft"
                         : "text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground"
@@ -330,7 +331,7 @@ const GalleryPage = () => {
                 <button
                   onClick={() => changePage(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground hover:border-gold/40 data-[touched=true]:border-gold/40 disabled:opacity-30 disabled:pointer-events-none transition-all duration-200"
+                  className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground hover:border-gold/40 data-[touched=true]:border-gold/40 disabled:opacity-30 disabled:pointer-events-none transition duration-200 active:scale-[0.97]"
                   aria-label="Previous page"
                 >
                   <ChevronLeft size={16} />
@@ -340,7 +341,7 @@ const GalleryPage = () => {
                   <button
                     key={page}
                     onClick={() => changePage(page)}
-                    className={`w-9 h-9 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`w-9 h-9 rounded-lg text-sm font-medium transition duration-200 active:scale-[0.97] ${
                       page === currentPage
                         ? "bg-gold text-white shadow-gold"
                         : "border border-border text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground hover:border-gold/40 data-[touched=true]:border-gold/40"
@@ -355,7 +356,7 @@ const GalleryPage = () => {
                 <button
                   onClick={() => changePage(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground hover:border-gold/40 data-[touched=true]:border-gold/40 disabled:opacity-30 disabled:pointer-events-none transition-all duration-200"
+                  className="w-9 h-9 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground hover:border-gold/40 data-[touched=true]:border-gold/40 disabled:opacity-30 disabled:pointer-events-none transition duration-200 active:scale-[0.97]"
                   aria-label="Next page"
                 >
                   <ChevronRight size={16} />

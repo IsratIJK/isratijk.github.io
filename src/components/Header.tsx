@@ -55,7 +55,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background border-b border-border shadow-soft py-3${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,box-shadow,padding] duration-200 bg-background border-b border-border shadow-soft py-3${
         transparent ? " xl:bg-transparent xl:border-transparent xl:shadow-none xl:py-5" : ""
       }`}
     >
@@ -95,7 +95,7 @@ const Header = () => {
             <ThemeToggle />
             <Link
               to="/contact"
-              className="ml-1 px-4 py-1.5 rounded-full bg-gold text-white text-sm font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition-all duration-200 shadow-gold"
+              className="ml-1 px-4 py-1.5 rounded-full bg-gold text-gold-foreground text-sm font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition duration-200 shadow-gold active:scale-[0.97]"
             >
               Get in Touch
             </Link>
@@ -105,7 +105,7 @@ const Header = () => {
         <div className="xl:hidden flex items-center gap-2">
           <ThemeToggle />
           <button
-            className="p-2 text-foreground rounded-lg hover:bg-muted data-[touched=true]:bg-muted transition-colors"
+            className="p-2 text-foreground rounded-lg hover:bg-muted data-[touched=true]:bg-muted transition-colors active:scale-[0.97]"
             onClick={() => isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -123,7 +123,7 @@ const Header = () => {
             aria-hidden="true"
           />
           <nav
-            className={`xl:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-page ${isClosing ? "animate-fade-out" : "animate-fade-in"}`}
+            className={`xl:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-page ${isClosing ? "animate-menu-out" : "animate-menu-in"}`}
             aria-label="Mobile navigation"
             onAnimationEnd={() => {
               if (isClosing) {
@@ -149,7 +149,7 @@ const Header = () => {
               ))}
               <Link
                 to="/contact"
-                className="mt-2 mx-0 py-2.5 rounded-full bg-gold text-white text-sm font-medium text-center hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition-all duration-200"
+                className="mt-2 mx-0 py-2.5 rounded-full bg-gold text-gold-foreground text-sm font-medium text-center hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition duration-200 active:scale-[0.97]"
               >
                 Get in Touch
               </Link>

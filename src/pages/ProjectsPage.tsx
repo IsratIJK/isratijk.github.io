@@ -11,12 +11,6 @@ import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { projects, type Project } from "@/data/projects";
 
-const statusLabels: Record<Project["status"], { label: string; className: string }> = {
-  active: { label: "Active", className: "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-800" },
-  "in-progress": { label: "In Progress", className: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-950/30 dark:text-amber-400 dark:border-amber-800" },
-  archived: { label: "Archived", className: "bg-muted text-muted-foreground border-border" },
-};
-
 const ProjectCover = ({ project }: { project: Project }) => {
   const [hasError, setHasError] = useState(false);
 
@@ -38,7 +32,7 @@ const ProjectCover = ({ project }: { project: Project }) => {
       onError={() => setHasError(true)}
       loading="lazy"
       decoding="async"
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 group-data-[touched=true]:scale-105"
+      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03] group-data-[touched=true]:scale-[1.03]"
     />
   );
 };
@@ -62,9 +56,6 @@ const ProjectDetailDialog = ({
               {tag}
             </span>
           ))}
-          <span className={`text-xs font-mono px-2.5 py-0.5 rounded-full border ${statusLabels[project.status].className}`}>
-            {statusLabels[project.status].label}
-          </span>
         </div>
         <DialogTitle className="text-base font-semibold text-foreground leading-snug text-left">
           {project.title}
@@ -112,7 +103,7 @@ const ProjectDetailDialog = ({
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-xs font-medium hover:bg-foreground/85 data-[touched=true]:bg-foreground/85 transition-all"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-xs font-medium hover:bg-foreground/85 data-[touched=true]:bg-foreground/85 transition active:scale-[0.97]"
             >
               <Github size={13} />
               GitHub
@@ -123,7 +114,7 @@ const ProjectDetailDialog = ({
               href={project.docs}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold text-white text-xs font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition-all shadow-gold"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold text-gold-foreground text-xs font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition shadow-gold active:scale-[0.97]"
             >
               <BookOpen size={13} />
               Docs
@@ -148,21 +139,15 @@ const ProjectDetailDialog = ({
 
 const ProjectCard = ({ project }: { project: Project }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const status = statusLabels[project.status];
 
   return (
     <>
       <article
-        className="group bg-background rounded-2xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-card data-[touched=true]:shadow-card transition-all duration-300 overflow-hidden flex flex-col"
+        className="group bg-card rounded-2xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-card data-[touched=true]:shadow-card transition duration-200 overflow-hidden flex flex-col"
       >
         {/* Cover image */}
         <div className="aspect-[16/9] overflow-hidden bg-muted relative">
           <ProjectCover project={project} />
-          <div className="absolute top-3 left-3">
-            <span className={`text-xs font-mono px-2.5 py-1 rounded-full border backdrop-blur-sm bg-background/80 ${status.className}`}>
-              {status.label}
-            </span>
-          </div>
         </div>
 
         {/* Content */}
@@ -267,6 +252,7 @@ const ProjectsPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/projects" />
       </Helmet>
       <PageHero
+        graphic="projects"
         label="Portfolio"
         title="Research and Open Source Projects"
         subtitle="A collection of research prototypes, engineering projects, and open-source contributions."
@@ -276,7 +262,7 @@ const ProjectsPage = () => {
             href="https://github.com/IsratIJK?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-white data-[touched=true]:text-white transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
           >
             <Github size={14} />
             GitHub Profile
@@ -298,7 +284,7 @@ const ProjectsPage = () => {
                 href="https://github.com/IsratIJK?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gold text-gold font-medium text-sm hover:bg-gold data-[touched=true]:bg-gold hover:text-white data-[touched=true]:text-white transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gold text-gold font-medium text-sm hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
               >
                 <Github size={16} />
                 View All on GitHub

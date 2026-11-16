@@ -17,6 +17,7 @@ const EducationPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/education" />
       </Helmet>
       <PageHero
+        graphic="education"
         label="Academic Background"
         title="Education"
         subtitle="Degrees, institutions, and academic distinctions."
@@ -40,7 +41,7 @@ const EducationPage = () => {
                         }`}
                       />
                     </div>
-                    <div className="flex-1 bg-background rounded-2xl p-6 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-300">
+                    <div className="flex-1 bg-card rounded-2xl p-6 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200">
                       <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                         <div className="flex gap-4 min-w-0">
                           {edu.logo && <CompanyLogo name={edu.institution} src={edu.logo} />}

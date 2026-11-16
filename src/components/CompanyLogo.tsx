@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface CompanyLogoProps {
   name: string;
@@ -11,7 +12,10 @@ const CompanyLogo = ({ name, src, className = "" }: CompanyLogoProps) => {
 
   return (
     <div
-      className={`flex-shrink-0 w-12 h-12 rounded-xl border border-border/70 bg-white flex items-center justify-center overflow-hidden ${className}`}
+      className={cn(
+        "flex-shrink-0 w-12 h-12 rounded-xl border border-border/70 bg-white flex items-center justify-center overflow-hidden",
+        className,
+      )}
     >
       {failed ? (
         <span className="font-display text-sm font-semibold text-gold" aria-hidden="true">

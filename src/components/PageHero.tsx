@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { type ReactNode } from "react";
+import HeroGraphic, { type HeroGraphicVariant } from "./HeroGraphic";
 
 interface Breadcrumb {
   label: string;
@@ -16,6 +17,8 @@ interface PageHeroProps {
   children?: ReactNode;
   className?: string;
   compact?: boolean;
+  /** Illustration shown on the right at desktop widths. */
+  graphic?: HeroGraphicVariant;
 }
 
 const PageHero = ({
@@ -27,6 +30,7 @@ const PageHero = ({
   children,
   className = "",
   compact = false,
+  graphic,
 }: PageHeroProps) => {
   return (
     <section
@@ -36,7 +40,12 @@ const PageHero = ({
       <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-gold/5 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-16 -left-16 w-60 h-60 rounded-full bg-gold/4 blur-3xl pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative">
+      <div
+        className={`container mx-auto px-6 relative ${
+          graphic ? "lg:grid lg:grid-cols-[minmax(0,1fr)_340px] xl:grid-cols-[minmax(0,1fr)_380px] lg:gap-12 lg:items-center" : ""
+        }`}
+      >
+        <div className="min-w-0">
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 mb-6">
             <Link
@@ -69,7 +78,11 @@ const PageHero = ({
           </p>
         )}
 
-        <div className={`flex flex-col ${actions ? "sm:flex-row sm:items-end sm:justify-between" : ""} gap-4`}>
+        <div
+          className={`flex flex-col ${actions ? "sm:flex-row sm:items-end sm:justify-between" : ""} ${
+            actions && graphic ? "lg:flex-col lg:items-start lg:justify-start" : ""
+          } gap-4`}
+        >
           <div>
             <h1
               className={`font-display font-bold text-foreground leading-tight ${
@@ -94,6 +107,13 @@ const PageHero = ({
         {children && (
           <div className="mt-6">
             {children}
+          </div>
+        )}
+        </div>
+
+        {graphic && (
+          <div className="hidden lg:block">
+            <HeroGraphic variant={graphic} />
           </div>
         )}
       </div>

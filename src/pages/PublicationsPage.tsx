@@ -180,7 +180,7 @@ const AbstractDialog = ({
               href={pub.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold text-white text-xs font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition-all shadow-gold"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gold text-gold-foreground text-xs font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition shadow-gold active:scale-[0.97]"
             >
               <Download size={13} />
               Download PDF
@@ -217,7 +217,7 @@ const PublicationEntry = ({ pub, index }: { pub: Publication; index: number }) =
 
   return (
     <>
-      <article className="group bg-background rounded-2xl border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-card data-[touched=true]:shadow-card transition-all duration-300 overflow-hidden">
+      <article className="group bg-card rounded-2xl border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-card data-[touched=true]:shadow-card transition duration-200 overflow-hidden">
         <div className="flex flex-col sm:flex-row">
           {/* Cover */}
           <div className="sm:w-36 lg:w-44 flex-shrink-0 aspect-[3/4] sm:aspect-auto overflow-hidden bg-muted relative">
@@ -365,6 +365,7 @@ const PublicationsPage = () => {
         <meta name="citation_abstract_html_url" content="https://www.sciencedirect.com/science/article/pii/S2352914825000383" />
       </Helmet>
       <PageHero
+        graphic="publications"
         label="Academic Work"
         title="Research Publications"
         subtitle={`${publications.length} publications · ${totalCitations}+ citations · IEEE, Elsevier`}
@@ -374,7 +375,7 @@ const PublicationsPage = () => {
             href="https://scholar.google.com/citations?user=n4mCE9QAAAAJ"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-white data-[touched=true]:text-white transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
           >
             <BookOpen size={14} />
             Google Scholar
@@ -394,7 +395,7 @@ const PublicationsPage = () => {
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
-                    className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                    className={`px-4 py-1.5 rounded-lg text-sm font-medium transition active:scale-[0.97] ${
                       filter === f
                         ? "bg-background text-foreground shadow-soft"
                         : "text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground"
@@ -420,7 +421,7 @@ const PublicationsPage = () => {
                 href="https://scholar.google.com/citations?user=n4mCE9QAAAAJ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gold text-gold font-medium text-sm hover:bg-gold data-[touched=true]:bg-gold hover:text-white data-[touched=true]:text-white transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gold text-gold font-medium text-sm hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
               >
                 <ExternalLink size={16} />
                 View All on Google Scholar

@@ -12,7 +12,7 @@
 - [Publications](https://isratijk.github.io/publications): peer-reviewed papers with DOIs and abstracts
 - [Projects](https://isratijk.github.io/projects): research and open source projects
 - [Gallery](https://isratijk.github.io/gallery): conferences, lab sessions, milestones
-- [CV](https://isratijk.github.io/cv): awards, skills, and CV PDF
+- [CV](https://isratijk.github.io/cv): awards, skills, and full academic record
 - [Contact](https://isratijk.github.io/contact)
 
 ## About

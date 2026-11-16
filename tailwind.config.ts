@@ -18,11 +18,11 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Digits", "Playfair Display", "Georgia", "serif"],
-        body: ["Digits", "Inter", "system-ui", "sans-serif"],
-        sans: ["Digits", "Inter", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
-        mono: ["Digits", "Space Mono", "ui-monospace", "Courier New", "monospace"],
-        serif: ["Digits", "Playfair Display", "ui-serif", "Georgia", "serif"],
+        display: ["Source Serif 4", "Georgia", "serif"],
+        body: ["Source Sans 3", "system-ui", "sans-serif"],
+        sans: ["Source Sans 3", "ui-sans-serif", "system-ui", "-apple-system", "sans-serif"],
+        mono: ["Source Code Pro", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
+        serif: ["Source Serif 4", "ui-serif", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -33,6 +33,7 @@ export default {
         gold: {
           DEFAULT: "hsl(var(--gold))",
           light: "hsl(var(--gold-light))",
+          foreground: "hsl(var(--gold-foreground))",
         },
         navy: {
           DEFAULT: "hsl(var(--navy))",
@@ -83,6 +84,11 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      transitionTimingFunction: {
+        DEFAULT: "cubic-bezier(0.23, 1, 0.32, 1)",
+        out: "cubic-bezier(0.23, 1, 0.32, 1)",
+        "in-out": "cubic-bezier(0.77, 0, 0.175, 1)",
       },
       keyframes: {
         "accordion-down": {

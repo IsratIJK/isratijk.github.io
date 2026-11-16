@@ -13,7 +13,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer
-      className="py-10 bg-navy-dark dark:bg-[hsl(222_47%_4%)] border-t border-white/5"
+      className="py-10 bg-navy-dark dark:bg-[hsl(225_16%_4%)] border-t border-white/5"
       aria-label="Site footer"
     >
       <div className="container mx-auto px-6">
@@ -32,11 +32,11 @@ const Footer = () => {
                 Israt Jahan Khan
               </span>
             </Link>
-            <p className="font-mono text-xs text-white/40 uppercase tracking-wider pl-0.5">
+            <p className="font-mono text-xs text-white/60 uppercase tracking-wider pl-0.5">
               Prospective PhD Candidate · Computer Science
             </p>
           </div>
-          <p className="font-mono text-xs text-white/25">
+          <p className="font-mono text-xs text-white/50">
             © {new Date().getFullYear()} · All rights reserved
           </p>
         </div>
@@ -51,14 +51,14 @@ const Footer = () => {
             <Link
               key={link.to}
               to={link.to}
-              className="text-xs font-mono text-white/30 hover:text-gold data-[touched=true]:text-gold transition-colors uppercase tracking-wider"
+              className="text-xs font-mono text-white/55 hover:text-gold data-[touched=true]:text-gold transition-colors uppercase tracking-wider"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <p className="text-center font-mono text-xs text-white/20 mt-6">
+        <p className="text-center font-mono text-xs text-white/40 mt-6">
           Dhaka, Bangladesh · Open to PhD opportunities worldwide
         </p>
       </div>

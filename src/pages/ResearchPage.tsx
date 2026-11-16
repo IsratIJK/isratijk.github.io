@@ -20,6 +20,7 @@ const ResearchPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/research" />
       </Helmet>
       <PageHero
+        graphic="research"
         label="Academic Research"
         title="Research Interests"
         subtitle="My research bridges computer science, machine learning, and computer vision to build AI systems that solve complex real-world problems."
@@ -41,7 +42,7 @@ const ResearchPage = () => {
                 return (
                   <div
                     key={area.id}
-                    className="bg-background rounded-2xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-card data-[touched=true]:shadow-card transition-all duration-300 p-6 flex flex-col"
+                    className="bg-card rounded-2xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-card data-[touched=true]:shadow-card transition duration-200 p-6 flex flex-col"
                   >
                     {/* Icon + title */}
                     <div className="flex items-start gap-4 mb-4">
@@ -118,13 +119,13 @@ const ResearchPage = () => {
                 <div className="flex gap-3 flex-shrink-0">
                   <Link
                     to="/publications"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-white data-[touched=true]:text-white transition-all"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
                   >
                     Publications <ArrowRight size={14} />
                   </Link>
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold text-white text-sm font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition-all shadow-gold"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold text-gold-foreground text-sm font-medium hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition shadow-gold active:scale-[0.97]"
                   >
                     Contact
                   </Link>

@@ -30,6 +30,7 @@ const AboutPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/about" />
       </Helmet>
       <PageHero
+        graphic="about"
         label="About"
         title="Israt Jahan Khan"
         subtitle={`${profile.role} · ${profile.institution}, ${profile.location}`}
@@ -136,7 +137,7 @@ const AboutPage = () => {
                 {education.map((edu) => (
                   <div
                     key={edu.id}
-                    className={`p-5 rounded-2xl border transition-all duration-300 ${
+                    className={`p-5 rounded-2xl border transition duration-200 ${
                       edu.current
                         ? "bg-gold/5 border-gold/25 hover:border-gold/40 data-[touched=true]:border-gold/40"
                         : "bg-background border-border/70 hover:border-gold/20 data-[touched=true]:border-gold/20"
@@ -214,7 +215,7 @@ const AboutPage = () => {
                   return (
                     <div
                       key={area.id}
-                      className="group flex gap-4 p-5 bg-cream rounded-2xl border border-border/50 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-300"
+                      className="group flex gap-4 p-5 bg-cream rounded-2xl border border-border/50 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200"
                     >
                       <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 group-data-[touched=true]:bg-gold/20 transition-colors">
                         <Icon size={18} className="text-gold" />
@@ -244,7 +245,7 @@ const AboutPage = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between p-4 bg-background rounded-xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-200"
+                    className="group flex items-center justify-between p-4 bg-card rounded-xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200"
                   >
                     <div>
                       <p className="text-sm font-medium text-foreground capitalize">

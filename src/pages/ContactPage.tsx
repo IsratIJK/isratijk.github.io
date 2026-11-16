@@ -49,6 +49,7 @@ const ContactPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/contact" />
       </Helmet>
       <PageHero
+        graphic="contact"
         label="Contact"
         title="Get in Touch"
         subtitle="Open to PhD opportunities, research collaborations, and academic conversations."
@@ -75,7 +76,7 @@ const ContactPage = () => {
                 <div className="space-y-4 mb-8">
                   <a
                     href={`mailto:${profile.email}`}
-                    className="flex items-center gap-4 p-4 rounded-xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-soft data-[touched=true]:shadow-soft transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-soft data-[touched=true]:shadow-soft transition group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-data-[touched=true]:bg-gold/20 transition-colors flex-shrink-0">
                       <Mail size={18} className="text-gold" />
@@ -107,7 +108,7 @@ const ContactPage = () => {
 
                 <a
                   href={`mailto:${profile.email}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold text-white font-medium text-sm hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition-all shadow-gold"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold text-gold-foreground font-medium text-sm hover:bg-gold/90 data-[touched=true]:bg-gold/90 transition shadow-gold active:scale-[0.97]"
                 >
                   <Mail size={16} />
                   Send Email
@@ -139,7 +140,7 @@ const ContactPage = () => {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center gap-4 p-4 rounded-xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-200"
+                        className="group flex items-center gap-4 p-4 rounded-xl border border-border/70 hover:border-gold/30 data-[touched=true]:border-gold/30 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200"
                         aria-label={item.label}
                       >
                         <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center group-hover:bg-gold/15 group-data-[touched=true]:bg-gold/15 transition-colors flex-shrink-0">

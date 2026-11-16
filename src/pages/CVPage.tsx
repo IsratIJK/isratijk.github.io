@@ -27,6 +27,7 @@ const CVPage = () => {
         <meta property="og:url" content="https://isratijk.github.io/cv" />
       </Helmet>
       <PageHero
+        graphic="cv"
         label="Academic Record"
         title="Curriculum Vitae"
         subtitle="Education, research experience, honors, and technical skills."
@@ -50,7 +51,7 @@ const CVPage = () => {
               <Link
                 to="/education"
                 onMouseEnter={() => import("./EducationPage")}
-                className="group flex items-center justify-between gap-4 bg-background rounded-2xl p-5 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-300"
+                className="group flex items-center justify-between gap-4 bg-card rounded-2xl p-5 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200"
               >
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {education[0].degree} in {education[0].field} at {education[0].institution}, and {education[1].degree} ({education[1].honor}) at {education[1].institution}.
@@ -75,7 +76,7 @@ const CVPage = () => {
               <Link
                 to="/experience"
                 onMouseEnter={() => import("./ExperiencePage")}
-                className="group flex items-center justify-between gap-4 bg-background rounded-2xl p-5 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-300"
+                className="group flex items-center justify-between gap-4 bg-card rounded-2xl p-5 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200"
               >
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Research and teaching positions, including {experiences[0].role} at {experiences[0].company}.
@@ -103,7 +104,7 @@ const CVPage = () => {
                   return (
                     <div
                       key={award.id}
-                      className="group flex gap-5 bg-background rounded-2xl p-5 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition-all duration-300"
+                      className="group flex gap-5 bg-card rounded-2xl p-5 border border-border/70 hover:border-gold/25 data-[touched=true]:border-gold/25 hover:shadow-soft data-[touched=true]:shadow-soft transition duration-200"
                     >
                       <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-data-[touched=true]:bg-gold/20 transition-colors mt-0.5">
                         <Icon size={19} className="text-gold" />
@@ -151,7 +152,7 @@ const CVPage = () => {
                 ].map((group) => (
                   <div
                     key={group.label}
-                    className="bg-background rounded-2xl p-5 border border-border/70"
+                    className="bg-card rounded-2xl p-5 border border-border/70"
                   >
                     <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-3">
                       {group.label}
