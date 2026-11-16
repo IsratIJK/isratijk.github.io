@@ -1,0 +1,184 @@
+# Israt Jahan Khan - Full Site Content
+
+> Prospective PhD student and researcher in Machine Learning, Computer Vision, and AI. M.Sc. student at BRAC University, Dhaka, Bangladesh. Former Lecturer and Research Assistant at United International University. Published in IEEE Access and Elsevier with 30+ citations.
+
+---
+
+## Site Pages
+
+- [Home](https://isratijk.github.io/)
+- [About](https://isratijk.github.io/about): bio, research focus, PhD availability
+- [Education](https://isratijk.github.io/education): degrees, institutions, CGPA and honors
+- [Experience](https://isratijk.github.io/experience): research and teaching positions with organizations
+- [Research](https://isratijk.github.io/research): research interest areas
+- [Publications](https://isratijk.github.io/publications): peer-reviewed papers with DOIs and abstracts
+- [Projects](https://isratijk.github.io/projects): research and open source projects
+- [Gallery](https://isratijk.github.io/gallery): conferences, lab sessions, milestones
+- [CV](https://isratijk.github.io/cv): awards, skills, and CV PDF
+- [Contact](https://isratijk.github.io/contact)
+
+---
+
+## About
+
+Israt Jahan Khan is a researcher specializing in Machine Learning, Computer Vision, Deep Learning, and Interdisciplinary AI Applications. She completed her B.Sc. in Computer Science and Engineering from United International University (2020–2024) with a CGPA of 3.97/4.00, graduating Summa Cum Laude — the highest academic honor. She is currently pursuing her M.Sc. in Computer Science and Engineering at BRAC University (2025–present), majoring in Data Science. She is actively seeking PhD positions in Computer Science, Machine Learning, Computer Vision, and related fields at research-intensive universities worldwide.
+
+---
+
+## Research Interests
+
+### Computer Vision
+Building vision-based systems for image understanding, object detection, and visual reasoning. Applied work includes medical imaging (3D MRI), number plate detection (YOLOv8), and real-time surveillance.
+- Tags: Object Detection, Medical Imaging, YOLOv8, ResNet, 3D ResNet, CBAM, Attention Mechanisms
+
+### Machine Learning
+Designing and analyzing supervised, unsupervised, and ensemble learning approaches for classification and regression tasks. Focused on improving accuracy, generalization, and efficiency on real-world datasets.
+- Tags: Random Forest, KNN, Decision Trees, Transfer Learning, Ensemble Methods, Supervised Learning
+
+### Deep Learning
+Developing deep neural architectures (CNNs, attention mechanisms (CBAM), 3D ResNets) for complex tasks in healthcare AI, IoT-integrated systems, and security applications.
+- Tags: CNN, CBAM, 3D Convolutional Networks, Attention Mechanisms, PyTorch, TensorFlow
+
+### Interdisciplinary AI
+Applying AI across domains including healthcare (Alzheimer's detection), traffic safety (IoT + deep learning), and data security (chaotic encryption). Bridging domain knowledge with data-driven methods.
+- Tags: Healthcare AI, Alzheimer's Detection, IoT, Data Security, Applied Deep Learning, Traffic Safety
+
+---
+
+## Publications
+
+### 1. Enhanced ROI guided deep learning model for Alzheimer's detection using 3D MRI images
+- **Authors:** Israt Jahan Khan, Md Fahim Bin Amin, Md Delwar Shahadat Deepu, Hazera Khatun Hira, Asif Mahmud, Anas Mashad Chowdhury, Salekul Islam, Md Saddam Hossain Mukta, Swakkhar Shatabda, Alzheimer's Disease Neuroimaging Initiative
+- **Journal:** Informatics in Medicine Unlocked, Elsevier, 2025
+- **DOI:** 10.1016/j.imu.2025.101650
+- **URL:** https://www.sciencedirect.com/science/article/pii/S2352914825000383
+- **Citations:** 12
+- **Keywords:** Alzheimer's disease, Regions of Interest, 3D MRI, Transfer learning, ResNet 3D, CBAM
+- **Summary:** Proposes a region-of-interest guided deep learning pipeline using 3D ResNet with CBAM attention for improved Alzheimer's disease classification from volumetric MRI scans. Evaluated on ADNI and OASIS datasets.
+
+### 2. SafeTrax: Smart Collision Prediction and Alert System Using IoT for Sustainable Traffic Safety
+- **Authors:** Md Fahim Bin Amin, Israt Jahan Khan, Faria Akter, Adib Ahmed, Md Motaharul Islam
+- **Journal:** IEEE Access, 2024
+- **DOI:** 10.1109/ACCESS.2024.3524676
+- **URL:** https://ieeexplore.ieee.org/abstract/document/10819396/
+- **Citations:** 6
+- **Keywords:** Traffic Safety, IoT, Collision Prediction, Deep Learning, AWS IoT Greengrass
+- **Summary:** IoT-integrated smart collision prediction system using deep learning models deployed on AWS IoT Greengrass for real-time traffic safety alerts.
+
+### 3. Synergetic KDRF Classifier: A Random Forest-Based Hybrid Approach for Multi-Class Classification Task
+- **Authors:** Israt Jahan Khan, Md Fahim Bin Amin, Kamrul Islam Shahin, Huu-Hoa Nguyen, Dewan Md Farid
+- **Venue:** 2024 27th International Conference on Computer and Information Technology (ICCIT), IEEE
+- **DOI:** 10.1109/ICCIT64611.2024.11021799
+- **URL:** https://ieeexplore.ieee.org/abstract/document/11021799
+- **Keywords:** Random Forest, KNN, Decision Tree, Multi-class Classification, Ensemble Learning
+- **Summary:** Novel hybrid KDRF classifier combining KNN, Decision Tree, and Random Forest with a synergetic voting mechanism for improved multi-class classification performance.
+
+### 4. Vehicle Number Plate Detection and Encryption in Digital Images Using YOLOv8 and Chaotic-Based Encryption Scheme
+- **Authors:** Israt Jahan Khan, Md Fahim Bin Amin, Mahady Hasan Sabbir, Durba Morshaline Nejhum, Abu Hasib Muhammad Nanzil, Raiyan Rahman
+- **Venue:** 2024 6th International Conference on Electrical Engineering and Information & Communication Technology (ICEEICT), IEEE
+- **DOI:** 10.1109/ICEEICT62016.2024.10534375
+- **URL:** https://ieeexplore.ieee.org/abstract/document/10534375
+- **Citations:** 12
+- **Keywords:** YOLOv8, Number Plate Detection, Chaotic Encryption, Data Privacy, Object Detection
+- **Summary:** End-to-end pipeline for vehicle number plate detection using YOLOv8 followed by chaotic-based encryption for privacy-preserving storage and transmission of sensitive vehicle data.
+
+---
+
+## Projects
+
+### Upgraded-SoupX
+- **Category:** Research · Bioinformatics · Open Source
+- **Description:** Full Python port and extension of the original SoupX R package. Drops the R dependency entirely, adds probabilistic per-cell decontamination (DecontX), doublet-aware estimation, gene-heterogeneity correction, a complete downstream analysis pipeline, and eight quantitative benchmark metrics.
+- **Tech:** Python, scRNA-seq, DecontX, NumPy, SciPy, Scanpy
+- **GitHub:** https://github.com/IsratIJK/Upgraded-soupX
+- **Docs:** https://isratijk.github.io/Upgraded-soupX/
+
+### VAE for Audio Representation and Clustering
+- **Category:** Research · Deep Learning · Audio AI
+- **Description:** Comprehensive study on Variational Autoencoders (VAEs) for unsupervised representation learning and clustering of audio data. Investigates how different VAE architectures and latent space enhancement techniques affect clustering performance.
+- **Tech:** Python, PyTorch, VAE, Latent Space, Clustering, Audio Processing
+- **GitHub:** https://github.com/IsratIJK/VAE-music
+
+### Alz-Predict-ROIvsNonROI
+- **Category:** Research · Open Source · Medical AI
+- **Description:** Deep learning pipeline for Alzheimer's Disease prediction from 3D MRI images using ROI-guided attention. Implements 3D ResNet + CBAM on ADNI and OASIS datasets.
+- **Tech:** Python, PyTorch, TensorFlow, CUDA, 3D ResNet
+- **GitHub:** https://github.com/FahimFBA/Alz-Predict-ROIvsNonROI
+
+### Smart Aid and Relief Rover
+- **Category:** Robotics · Electronics · Embedded
+- **Description:** Autonomous rover for disaster relief scenarios, equipped with AI for navigation and victim detection. Built with embedded C++ on Arduino platform.
+- **Tech:** C++, Arduino, Embedded Systems, Sensors, Wireless Comm
+- **GitHub:** https://github.com/IsratIJK/smart-aid-and-relief-rover
+
+### StudentBook
+- **Category:** Web Application · EdTech
+- **Description:** A revamped social media platform designed specifically for educational institutions, connecting students, faculty, and resources in one ecosystem.
+- **Tech:** React, Node.js, MySQL, REST API
+- **GitHub:** https://github.com/FahimFBA/StudentBook
+- **Demo:** https://fahimfba.github.io/StudentBook
+
+---
+
+## Experience
+
+Page: https://isratijk.github.io/experience
+
+### Research Intern - ELITE Research Lab LLC (https://elitelab.ai), Queens, NY, USA (Nov 2026 - Present)
+Promoted from Student Researcher to Research Intern. Continuing research projects involving data analysis, model development, and experimentation with the ELITE Research Lab team.
+
+### Student Researcher - ELITE Research Lab LLC (https://elitelab.ai), Queens, NY, USA (Aug 2026 - Nov 2026)
+Contributing to research projects involving data analysis, model development, and experimentation. Collaborating with the research team to explore innovative approaches and solve real-world problems using data-driven methods.
+
+### Lecturer - United International University (https://www.uiu.ac.bd), Dhaka, Bangladesh (Spring & Summer 2025)
+Taught undergraduate courses: Data Structures and Algorithms, Digital Logic Design, System Analysis and Design, Database Management System. Guided students in project showcase and served as project judge.
+
+### Research Assistant - United International University (https://www.uiu.ac.bd), Dhaka, Bangladesh (Nov 2024 - Feb 2025)
+Interdisciplinary Civil Engineering-based research project. Led core contributions to codebase and research paper. Reduced training costs while maintaining high accuracy.
+
+### Research Intern - CCDS, Center for Computational & Data Sciences (https://ccds.ai), Independent University Bangladesh (Nov 2024 - Jan 2025)
+Machine learning, data analysis, and Natural Language Processing (NLP) research. Developed ML models and collaborated with research team.
+
+### Undergraduate Teaching Assistant - United International University (https://www.uiu.ac.bd), Dhaka, Bangladesh (Oct 2023 - Jan 2024)
+Assisted in teaching Data Structures and Algorithms. Conducted lab sessions, graded assignments.
+
+---
+
+## Education
+
+Page: https://isratijk.github.io/education
+
+### M.Sc. in Computer Science and Engineering - BRAC University (https://www.bracu.ac.bd/), Dhaka, Bangladesh (2025 - Present)
+Majoring in Data Science. Continuing research in machine learning, computer vision, and applied AI.
+
+### B.Sc. in Computer Science and Engineering - United International University (https://www.uiu.ac.bd), Dhaka, Bangladesh (2020 - 2024)
+CGPA: 3.97/4.00, Summa Cum Laude (highest academic honor). Majored in Data Science. Active research assistant throughout undergraduate studies.
+
+---
+
+## Awards & Honors
+
+- **Summa Cum Laude** - United International University, 2025. Graduated with CGPA 3.97/4.00.
+- **Scholarship for Outstanding Result (11 times)** - United International University, 2020-2024. Awarded eleven consecutive times for outstanding academic performance.
+- **BDT 200,000 Research Grant** - IAR, United International University, 2024. Competitive funding for research integrating machine learning and AI into green computing.
+
+---
+
+## Contact & Academic Profiles
+
+- **Website:** https://isratijk.github.io/
+- **Email:** isratjahankhanijk@gmail.com
+- **Location:** Dhaka, Bangladesh
+- **LinkedIn:** https://www.linkedin.com/in/isratijk/
+- **GitHub:** https://github.com/IsratIJK
+- **Google Scholar:** https://scholar.google.com/citations?user=n4mCE9QAAAAJ
+- **ORCID:** https://orcid.org/0000-0003-2757-3776
+- **ResearchGate:** https://www.researchgate.net/profile/Israt-Khan-5
+
+---
+
+## PhD Availability
+
+Israt Jahan Khan is actively seeking PhD positions in Computer Science, Machine Learning, Computer Vision, and related fields at research-intensive universities worldwide. She is particularly interested in research groups working on computer vision, medical AI, applied deep learning, and interdisciplinary AI applications.
+
+**Contact for PhD inquiries:** isratjahankhanijk@gmail.com

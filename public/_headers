@@ -1,0 +1,57 @@
+/*
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+  Vary: Accept
+  Link: </.well-known/api-catalog>; rel="api-catalog"
+  Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
+  Link: </llms.txt>; rel="describedby"; type="text/plain"
+  Link: </llms-full.txt>; rel="describedby"; type="text/plain"
+  Link: </auth.md>; rel="describedby"; type="text/markdown"
+  Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
+
+/auth.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
+
+/ai.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex
+
+/.well-known/mcp/server-card.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: noindex

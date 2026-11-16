@@ -1,0 +1,123 @@
+# Israt Jahan Khan
+
+> Prospective PhD student and researcher in Machine Learning, Computer Vision, and AI. M.Sc. student at BRAC University, Dhaka, Bangladesh. Former Lecturer and Research Assistant at United International University. Published in IEEE Access and Elsevier with 30+ citations.
+
+## Site Pages
+
+- [Home](https://isratijk.github.io/)
+- [About](https://isratijk.github.io/about): bio, research focus, PhD availability
+- [Education](https://isratijk.github.io/education): degrees, institutions, CGPA and honors
+- [Experience](https://isratijk.github.io/experience): research and teaching positions with organizations
+- [Research](https://isratijk.github.io/research): research interest areas
+- [Publications](https://isratijk.github.io/publications): peer-reviewed papers with DOIs and abstracts
+- [Projects](https://isratijk.github.io/projects): research and open source projects
+- [Gallery](https://isratijk.github.io/gallery): conferences, lab sessions, milestones
+- [CV](https://isratijk.github.io/cv): awards, skills, and CV PDF
+- [Contact](https://isratijk.github.io/contact)
+
+## About
+
+Israt Jahan Khan is a researcher specializing in Machine Learning, Computer Vision, Deep Learning, and Interdisciplinary AI Applications. She completed her B.Sc. in Computer Science and Engineering from United International University (2020–2024) with a CGPA of 3.97/4.00, graduating Summa Cum Laude - the highest academic honor. She is currently pursuing her M.Sc. in Computer Science and Engineering at BRAC University (2025–present), majoring in Data Science. She is actively seeking PhD positions in Computer Science, Machine Learning, Computer Vision, and related fields at research-intensive universities worldwide.
+
+## Research Interests
+
+- Computer Vision: object detection, medical imaging, YOLOv8, 3D ResNet, attention mechanisms
+- Machine Learning: supervised learning, ensemble methods, transfer learning, Random Forest, KNN, Decision Trees
+- Deep Learning: CNN, CBAM, 3D convolutional networks, PyTorch, TensorFlow
+- Interdisciplinary AI: healthcare AI (Alzheimer's detection), IoT-integrated traffic safety, data security, applied deep learning
+
+## Publications
+
+1. **"Enhanced ROI guided deep learning model for Alzheimer's detection using 3D MRI images"**
+   - Authors: Israt Jahan Khan, Md Fahim Bin Amin, Md Delwar Shahadat Deepu, Hazera Khatun Hira, Asif Mahmud, Anas Mashad Chowdhury, Salekul Islam, Md Saddam Hossain Mukta, Swakkhar Shatabda, Alzheimer's Disease Neuroimaging Initiative
+   - Journal: Informatics in Medicine Unlocked, Elsevier, 2025
+   - DOI: 10.1016/j.imu.2025.101650
+   - URL: https://www.sciencedirect.com/science/article/pii/S2352914825000383
+   - Citations: 12
+   - Keywords: Alzheimer's disease, Regions of Interest, 3D MRI, Transfer learning, ResNet 3D, CBAM
+
+2. **"SafeTrax: Smart Collision Prediction and Alert System Using IoT for Sustainable Traffic Safety"**
+   - Authors: Md Fahim Bin Amin, Israt Jahan Khan, Faria Akter, Adib Ahmed, Md Motaharul Islam
+   - Journal: IEEE Access, 2024
+   - DOI: 10.1109/ACCESS.2024.3524676
+   - URL: https://ieeexplore.ieee.org/abstract/document/10819396/
+   - Citations: 6
+   - Keywords: Traffic Safety, IoT, Collision Prediction, Deep Learning, AWS IoT Greengrass
+
+3. **"Synergetic KDRF Classifier: A Random Forest-Based Hybrid Approach for Multi-Class Classification Task"**
+   - Authors: Israt Jahan Khan, Md Fahim Bin Amin, Kamrul Islam Shahin, Huu-Hoa Nguyen, Dewan Md Farid
+   - Venue: 2024 27th International Conference on Computer and Information Technology (ICCIT), IEEE
+   - DOI: 10.1109/ICCIT64611.2024.11021799
+   - URL: https://ieeexplore.ieee.org/abstract/document/11021799
+   - Keywords: Random Forest, KNN, Decision Tree, Multi-class Classification, Ensemble Learning
+
+4. **"Vehicle Number Plate Detection and Encryption in Digital Images Using YOLOv8 and Chaotic-Based Encryption Scheme"**
+   - Authors: Israt Jahan Khan, Md Fahim Bin Amin, Mahady Hasan Sabbir, Durba Morshaline Nejhum, Abu Hasib Muhammad Nanzil, Raiyan Rahman
+   - Venue: 2024 6th International Conference on Electrical Engineering and Information & Communication Technology (ICEEICT), IEEE
+   - DOI: 10.1109/ICEEICT62016.2024.10534375
+   - URL: https://ieeexplore.ieee.org/abstract/document/10534375
+   - Citations: 12
+   - Keywords: YOLOv8, Number Plate Detection, Chaotic Encryption, Data Privacy, Object Detection
+
+## Selected Projects
+
+- **StudentBook**: Web application for educational institutions with campus social features.
+  - GitHub: https://github.com/FahimFBA/StudentBook
+  - Demo: https://fahimfba.github.io/StudentBook
+
+## Experience
+
+Full timeline: https://isratijk.github.io/experience
+
+- **Research Intern**, [ELITE Research Lab LLC](https://elitelab.ai), Queens, NY, USA (Nov 2026 – Present)
+  Promoted from Student Researcher to Research Intern. Continuing research projects involving data analysis, model development, and experimentation with the ELITE Research Lab team.
+
+- **Student Researcher**, [ELITE Research Lab LLC](https://elitelab.ai), Queens, NY, USA (Aug 2026 – Nov 2026)
+  Contributing to research projects involving data analysis, model development, and experimentation. Collaborating with the research team to explore innovative approaches and solve real-world problems using data-driven methods.
+
+- **Lecturer**, [United International University](https://www.uiu.ac.bd), Dhaka, Bangladesh (Spring & Summer 2025)
+  Taught undergraduate courses: Data Structures and Algorithms, Digital Logic Design, System Analysis and Design, Database Management System. Guided students in project showcase and served as project judge.
+
+- **Research Assistant**, [United International University](https://www.uiu.ac.bd), Dhaka, Bangladesh (Nov 2024 – Feb 2025)
+  Interdisciplinary Civil Engineering-based research project. Led core contributions to codebase and research paper. Reduced training costs while maintaining high accuracy.
+
+- **Research Intern**, [CCDS - Center for Computational & Data Sciences](https://ccds.ai), Independent University Bangladesh (Nov 2024 – Jan 2025)
+  Machine learning, data analysis, and Natural Language Processing (NLP) research. Developed ML models and collaborated with research team.
+
+- **Undergraduate Teaching Assistant**, [United International University](https://www.uiu.ac.bd), Dhaka, Bangladesh (Oct 2023 – Jan 2024)
+  Assisted in teaching Data Structures and Algorithms. Conducted lab sessions, graded assignments.
+
+## Education
+
+Full details: https://isratijk.github.io/education
+
+- **M.Sc. in Computer Science and Engineering**, [BRAC University](https://www.bracu.ac.bd/), Dhaka, Bangladesh (2025 – Present)
+  Majoring in Data Science. Continuing research in machine learning, computer vision, and applied AI.
+
+- **B.Sc. in Computer Science and Engineering**, [United International University](https://www.uiu.ac.bd), Dhaka, Bangladesh (2020 – 2024)
+  CGPA: 3.97/4.00 - Summa Cum Laude (highest academic honor). Majored in Data Science. Active research assistant throughout undergraduate studies.
+
+## Awards & Honors
+
+- **Summa Cum Laude** - United International University, 2025. Graduated with CGPA 3.97/4.00.
+- **Scholarship for Outstanding Result - 11 times** - United International University, 2020–2024. Awarded eleven consecutive times for outstanding academic performance.
+- **BDT 200,000 Research Grant** - IAR, United International University, 2024. Competitive funding for research integrating machine learning and AI into green computing.
+
+## Contact & Academic Profiles
+
+- Website: https://isratijk.github.io/
+- Email: isratjahankhanijk@gmail.com
+- Location: Dhaka, Bangladesh
+- LinkedIn: https://www.linkedin.com/in/isratijk/
+- GitHub: https://github.com/IsratIJK
+- Google Scholar: https://scholar.google.com/citations?user=n4mCE9QAAAAJ
+- ORCID: https://orcid.org/0000-0003-2757-3776
+- ResearchGate: https://www.researchgate.net/profile/Israt-Khan-5
+
+## PhD Availability
+
+Israt Jahan Khan is actively seeking PhD positions in Computer Science, Machine Learning, Computer Vision, and related fields at research-intensive universities worldwide. She is particularly interested in research groups working on computer vision, medical AI, applied deep learning, and interdisciplinary AI applications. Contact: isratjahankhanijk@gmail.com
+
+## Full Content
+
+- [Complete site content](https://isratijk.github.io/llms-full.txt): Full text of all sections including projects, experience, education, awards, and publications with summaries

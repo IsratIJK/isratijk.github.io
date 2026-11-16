@@ -1,0 +1,37 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://isratijk.github.io/",
+      "describedby": [
+        {
+          "href": "https://isratijk.github.io/llms.txt",
+          "type": "text/plain",
+          "title": "LLM-readable academic profile summary"
+        },
+        {
+          "href": "https://isratijk.github.io/llms-full.txt",
+          "type": "text/plain",
+          "title": "Complete LLM-readable portfolio content"
+        },
+        {
+          "href": "https://isratijk.github.io/ai.txt",
+          "type": "text/plain",
+          "title": "AI training and usage permissions"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://isratijk.github.io/llms-full.txt",
+          "type": "text/plain",
+          "title": "Full site content for agents"
+        }
+      ],
+      "type": [
+        {
+          "href": "https://schema.org/ProfilePage",
+          "title": "Academic portfolio page"
+        }
+      ]
+    }
+  ]
+}

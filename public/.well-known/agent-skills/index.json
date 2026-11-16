@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "read-profile",
+      "type": "data",
+      "description": "Returns a concise LLM-readable summary of Israt Jahan Khan's academic profile, research interests, publications, and contact information.",
+      "url": "https://isratijk.github.io/.well-known/agent-skills/read-profile/SKILL.md",
+      "sha256": "c94ce3b39fb220719740eb55ed36530c11fe46466d647c6bb80984108f70919e"
+    },
+    {
+      "name": "read-full-content",
+      "type": "data",
+      "description": "Returns the complete LLM-readable content of the portfolio including all publications with summaries, projects, experience, education, and awards.",
+      "url": "https://isratijk.github.io/.well-known/agent-skills/read-full-content/SKILL.md",
+      "sha256": "f4d08801e9915bab5d1afa57d86fcd17d37a92a5ac86fc3248f28c7dc32df719"
+    }
+  ]
+}

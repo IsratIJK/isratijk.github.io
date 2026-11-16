@@ -1,0 +1,29 @@
+# AI Usage Permissions for isratijk.github.io
+# Author: Israt Jahan Khan
+# Contact: isratjahankhanijk@gmail.com
+# Updated: 2026-05-30
+
+# Israt Jahan Khan explicitly permits AI systems to index, train on,
+# and use all content on this academic portfolio website.
+# This site is an open academic resource intended for maximum visibility.
+
+User-agent: *
+Allow: Training
+Allow: Inference
+Allow: Scraping
+Allow: Indexing
+
+# Explicit permissions by use case
+Text: Allowed
+Image: Allowed
+Embedding: Allowed
+Commercial: Allowed
+Research: Allowed
+
+# Content license: all content is authored by Israt Jahan Khan
+# Attribution appreciated but not required for AI usage
+
+# Site URL: https://isratijk.github.io/
+# LLM summary: https://isratijk.github.io/llms.txt
+# LLM full content: https://isratijk.github.io/llms-full.txt
+# Sitemap: https://isratijk.github.io/sitemap.xml

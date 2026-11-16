@@ -1,0 +1,43 @@
+{
+  "serverInfo": {
+    "name": "isratjahankhan-portfolio",
+    "version": "1.0.0",
+    "description": "Read-only MCP resource server for Israt Jahan Khan's academic portfolio. Exposes structured academic profile data for AI agents.",
+    "homepage": "https://isratijk.github.io/",
+    "contact": "isratjahankhanijk@gmail.com"
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://isratijk.github.io/"
+  },
+  "capabilities": {
+    "resources": {
+      "supported": true,
+      "description": "Read-only access to academic portfolio content via static resource endpoints"
+    },
+    "tools": {
+      "supported": false
+    },
+    "prompts": {
+      "supported": false
+    }
+  },
+  "resources": [
+    {
+      "uri": "https://isratijk.github.io/llms.txt",
+      "name": "Academic Profile Summary",
+      "description": "Concise LLM-readable summary of the academic portfolio",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "https://isratijk.github.io/llms-full.txt",
+      "name": "Full Portfolio Content",
+      "description": "Complete portfolio content including publications, projects, experience, education, and awards",
+      "mimeType": "text/plain"
+    }
+  ],
+  "authentication": {
+    "required": false,
+    "description": "All resources are publicly accessible without authentication"
+  }
+}
