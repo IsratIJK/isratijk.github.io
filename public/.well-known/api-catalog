@@ -17,6 +17,16 @@
           "href": "https://isratijk.github.io/ai.txt",
           "type": "text/plain",
           "title": "AI training and usage permissions"
+        },
+        {
+          "href": "https://isratijk.github.io/AGENTS.md",
+          "type": "text/markdown",
+          "title": "Guidance for AI agents"
+        },
+        {
+          "href": "https://isratijk.github.io/sitemap.md",
+          "type": "text/markdown",
+          "title": "Markdown sitemap"
         }
       ],
       "service-doc": [

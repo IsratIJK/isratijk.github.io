@@ -2,6 +2,16 @@
 
 Architectural and structural changes. Content-only edits (new publications, gallery items, etc.) are not listed.
 
+## [1.1.0] - 2026-11-16
+
+### Agent discoverability
+- **`robots.txt` AI policy.** Explicit allow groups added for `Claude-SearchBot`, `Claude-User` and `Perplexity-User`, so training, search and user-triggered crawlers from OpenAI, Anthropic, Perplexity and Google are each named. Every group (54) now carries `Content-Signal: ai-train=yes, search=yes, ai-input=yes` ([contentsignals.org](https://contentsignals.org/)), matching `ai.txt`. The signal repeats per group because a crawler reads only the most specific group matching its user agent.
+- **`llms.txt`** follows the llmstxt.org layout more closely: the summary is one sentence, "Site Pages" is now "Important pages" and "Full Content" is now "Optional" (the section agents may skip when context is short).
+- **`sitemap.md`.** `scripts/generate-sitemap.mjs` also writes `public/sitemap.md`, a markdown list of every route with its description and last-updated date, plus the site's machine-readable files. Same routes and git-based dates as `sitemap.xml`; titles and descriptions live in the script's `overrides` map. Generated on every build, do not edit by hand.
+- **`/AGENTS.md`** (`public/AGENTS.md`): guidance for AI agents reading the site. Covers what the site is, which plain-text files to fetch, access policy, how to cite (DOIs, canonical URL) and contact. Not a coding-agent file.
+- `AGENTS.md` and `sitemap.md` are linked from the `<head>` of `index.html` (`rel="describedby"`), the `.well-known/api-catalog` linkset and the `Optional` section of `llms.txt`.
+- Not added: `agents.json` (describes API flows; the site has no API), OAuth discovery (no protected API), and `Accept: text/markdown` negotiation (GitHub Pages cannot vary responses by request header; `functions/_middleware.js` does this on Cloudflare Pages only).
+
 ## [1.0.0] - 2026-11-16
 
 First release of the temporary GitHub Pages mirror at `isratijk.github.io`, hosted here while `isratjahankhan.com` is in redemption. Built from the main site's source, with the hosting, design and SEO changes below.

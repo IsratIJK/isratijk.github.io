@@ -1,185 +1,252 @@
 User-agent: Googlebot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Bingbot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Twitterbot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: facebookexternalhit
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: LinkedInBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Applebot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Applebot-Extended
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# AI crawl policy: fully open (train + search + user)
+# Content-Signal (https://contentsignals.org/) repeats in every group because
+# a crawler only reads the most specific group matching its user agent.
 
 # OpenAI / ChatGPT
 User-agent: ChatGPT-User
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: GPTBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: OAI-SearchBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Google AI
 User-agent: Google-Extended
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Perplexity
 User-agent: PerplexityBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+User-agent: Perplexity-User
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Anthropic / Claude
 User-agent: ClaudeBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+User-agent: Claude-SearchBot
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+User-agent: Claude-User
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: anthropic-ai
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Meta AI
 User-agent: meta-externalagent
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: meta-externalfetcher
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # xAI / Grok
 User-agent: xAI-Crawler
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # DuckDuckGo AI
 User-agent: DuckAssistBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Allen Institute for AI
 User-agent: AI2Bot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Mistral AI
 User-agent: MistralAI-User
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Alibaba / Qwen
 User-agent: Qwen
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Common Crawl (used for AI training datasets)
 User-agent: CCBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Cohere
 User-agent: cohere-ai
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # You.com
 User-agent: YouBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Amazon
 User-agent: Amazonbot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Diffbot (knowledge graph / AI)
 User-agent: Diffbot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Bytedance
 User-agent: Bytespider
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Petal / Huawei
 User-agent: PetalBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Omgili / Webz.io (AI data providers)
 User-agent: omgilibot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Webzio-Extended
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # iAsk AI
 User-agent: iaskspider
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Timpi
 User-agent: Timpibot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # DataForSEO
 User-agent: DataForSeoBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # DeepSeek AI
 User-agent: DeepSeekBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Yandex
 User-agent: YandexBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: YandexImages
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Baidu
 User-agent: Baiduspider
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Baiduspider-render
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Naver (South Korea)
 User-agent: NaverBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Yeti
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Internet Archive / Wayback Machine
 User-agent: ia_archiver
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: archive.org_bot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Microsoft Copilot / Bing AI
 User-agent: BingPreview
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: MicrosoftPreview
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # SEO analytics (used by academic/AI research tooling)
 User-agent: SemrushBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: AhrefsBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: MozBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: DotBot
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # Sogou (Chinese AI)
 User-agent: Sogou web spider
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 User-agent: Sogou inst spider
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # All other bots
 User-agent: *
 Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 Sitemap: https://isratijk.github.io/sitemap.xml
 

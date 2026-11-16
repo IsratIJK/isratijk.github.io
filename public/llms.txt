@@ -1,8 +1,8 @@
 # Israt Jahan Khan
 
-> Prospective PhD student and researcher in Machine Learning, Computer Vision, and AI. M.Sc. student at BRAC University, Dhaka, Bangladesh. Former Lecturer and Research Assistant at United International University. Published in IEEE Access and Elsevier with 30+ citations.
+> Academic portfolio of Israt Jahan Khan, an ML and computer vision researcher (M.Sc., BRAC University) seeking PhD positions, with publications, projects, CV, and contact details.
 
-## Site Pages
+## Important pages
 
 - [Home](https://isratijk.github.io/)
 - [About](https://isratijk.github.io/about): bio, research focus, PhD availability
@@ -118,6 +118,8 @@ Full details: https://isratijk.github.io/education
 
 Israt Jahan Khan is actively seeking PhD positions in Computer Science, Machine Learning, Computer Vision, and related fields at research-intensive universities worldwide. She is particularly interested in research groups working on computer vision, medical AI, applied deep learning, and interdisciplinary AI applications. Contact: isratjahankhanijk@gmail.com
 
-## Full Content
+## Optional
 
 - [Complete site content](https://isratijk.github.io/llms-full.txt): Full text of all sections including projects, experience, education, awards, and publications with summaries
+- [AGENTS.md](https://isratijk.github.io/AGENTS.md): how agents should read, fetch, and cite this site
+- [Markdown sitemap](https://isratijk.github.io/sitemap.md): every page with last-updated dates

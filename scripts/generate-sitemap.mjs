@@ -5,19 +5,21 @@ import { dirname, join, resolve } from "path";
 const BASE_URL = "https://isratijk.github.io";
 const ROOT = resolve(dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "..");
 const OUT = join(ROOT, "public/sitemap.xml");
+const OUT_MD = join(ROOT, "public/sitemap.md");
 
 // Optional per-route tuning. Routes in App.tsx not listed here still get included with defaults.
+// title/description feed sitemap.md.
 const overrides = {
-  "/": { priority: "1.0" },
-  "/about": { priority: "0.9" },
-  "/research": { priority: "0.9" },
-  "/publications": { priority: "0.9" },
-  "/projects": { priority: "0.8" },
-  "/education": { priority: "0.8" },
-  "/experience": { priority: "0.8" },
-  "/cv": { priority: "0.8" },
-  "/gallery": { priority: "0.6" },
-  "/contact": { priority: "0.7", changefreq: "yearly" },
+  "/": { priority: "1.0", title: "Home", description: "overview, research focus, featured publications" },
+  "/about": { priority: "0.9", description: "bio, research focus, PhD availability" },
+  "/research": { priority: "0.9", description: "research interest areas" },
+  "/publications": { priority: "0.9", description: "peer-reviewed papers with DOIs and abstracts" },
+  "/projects": { priority: "0.8", description: "research and open source projects" },
+  "/education": { priority: "0.8", description: "degrees, institutions, CGPA and honors" },
+  "/experience": { priority: "0.8", description: "research and teaching positions" },
+  "/cv": { priority: "0.8", title: "CV", description: "awards, skills, and full academic record" },
+  "/gallery": { priority: "0.6", description: "conferences, lab sessions, milestones" },
+  "/contact": { priority: "0.7", changefreq: "yearly", description: "email and academic profiles" },
 };
 const DEFAULTS = { priority: "0.7", changefreq: "monthly" };
 
@@ -183,10 +185,13 @@ if (process.env.SITEMAP_DEBUG) for (const r of routes) console.log(r.path, r.fil
 const history = prepareHistory();
 const previous = previousLastmods();
 
-const urls = routes
-  .map(({ path, files }) => {
-    const loc = `${BASE_URL}${path}`;
-    const { priority, changefreq } = { ...DEFAULTS, ...overrides[path] };
+const pages = routes.map(({ path, files }) => {
+  const loc = `${BASE_URL}${path}`;
+  return { path, loc, lastmod: lastModified(files, loc, history, previous), ...DEFAULTS, ...overrides[path] };
+});
+
+const urls = pages
+  .map(({ path, loc, lastmod, priority, changefreq }) => {
     const images = (imagesFor[path] ?? [])
       .map((img) => `
     <image:image>
@@ -195,7 +200,7 @@ const urls = routes
       .join("");
     return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${lastModified(files, loc, history, previous)}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>${images}
   </url>`;
@@ -209,5 +214,30 @@ ${urls}
 </urlset>
 `;
 
+const titleFor = (path) => path.slice(1).replace(/^\w/, (c) => c.toUpperCase());
+
+const md = `# Sitemap: Israt Jahan Khan
+
+> Every page on ${BASE_URL}, generated at build time from the site's routes. XML version: ${BASE_URL}/sitemap.xml
+
+## Pages
+
+${pages
+  .map(({ path, loc, lastmod, title, description }) => `- [${title ?? titleFor(path)}](${loc}): ${description ?? ""} (updated ${lastmod})`)
+  .join("\n")}
+
+## Machine-readable resources
+
+- [llms.txt](${BASE_URL}/llms.txt): curated summary for language models
+- [llms-full.txt](${BASE_URL}/llms-full.txt): full text of every section
+- [AGENTS.md](${BASE_URL}/AGENTS.md): how agents should read and cite this site
+- [sitemap.xml](${BASE_URL}/sitemap.xml): XML sitemap with image entries
+- [robots.txt](${BASE_URL}/robots.txt): crawl policy (all crawlers allowed)
+- [ai.txt](${BASE_URL}/ai.txt): AI training and usage permissions
+- [API catalog](${BASE_URL}/.well-known/api-catalog): RFC 9727 linkset
+- [Agent skills](${BASE_URL}/.well-known/agent-skills/index.json): agent skills index
+`;
+
 writeFileSync(OUT, xml);
+writeFileSync(OUT_MD, md);
 console.log(`Sitemap generated: ${routes.length} routes (${routes.map((r) => r.path).join(", ")}).`);

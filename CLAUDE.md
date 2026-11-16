@@ -164,9 +164,9 @@ The script is fully automatic — no route list to maintain:
 3. `lastmod` = last commit date touching those files (`git log -1`); uncommitted changes → today
 4. Vercel shallow-clones the repo, so the script runs `git fetch --unshallow` first; if that fails, dates landing on the shallow boundary fall back to the previously committed `sitemap.xml` value
 5. Adds `<image:image>` entries from CDN URLs in data files (profile photo, publication/project covers, gallery images/video posters)
-6. Writes `public/sitemap.xml`
+6. Writes `public/sitemap.xml` and `public/sitemap.md` (markdown sitemap for agents; page titles/descriptions come from the `overrides` map)
 
-**Never manually edit `public/sitemap.xml`** — it is overwritten on every build.
+**Never manually edit `public/sitemap.xml` or `public/sitemap.md`** — both are overwritten on every build.
 
 Optional priority/changefreq tweaks live in the `overrides` map at the top of the script (default `0.7`/`monthly`). Debug the route → file mapping with `SITEMAP_DEBUG=1 node scripts/generate-sitemap.mjs`.
 
@@ -263,7 +263,8 @@ Rewrite order matters: Vercel evaluates top-to-bottom. If the SPA catch-all is f
 
 ### public/ static files
 - `robots.txt` — 40+ bot allow rules + catch-all
-- `sitemap.xml` — auto-generated at build (see above)
+- `sitemap.xml` / `sitemap.md` — auto-generated at build (see above)
+- `AGENTS.md` — guidance for AI agents reading the site (served at `/AGENTS.md`; not a coding-agent file)
 - `ai.txt` — Spawning-compatible AI training consent
 - `llms.txt` — LLM-readable summary (llmstxt.org spec)
 - `llms-full.txt` — full portfolio content for LLMs
