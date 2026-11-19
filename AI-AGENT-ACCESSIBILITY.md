@@ -16,8 +16,6 @@ This document describes all measures taken to ensure AI agents, LLMs, and automa
 | Agent skills | Agent Skills Discovery v0.2.0 | `/.well-known/agent-skills/index.json` | ✅ |
 | MCP server card | SEP-1649 server card | `/.well-known/mcp/server-card.json` | ✅ |
 | Auth info | auth.md (WorkOS standard) | `/auth.md` | ✅ |
-| Link headers | RFC 8288 response headers | `_headers` (Cloudflare Pages) | ✅ |
-| Markdown negotiation | `Accept: text/markdown` support | Cloudflare Pages Function | ✅ |
 | Browser agent tools | WebMCP `navigator.modelContext` | `src/main.tsx` | ✅ |
 | Structured data | Schema.org JSON-LD | `index.html` | ✅ |
 | Sitemap | XML sitemap | `/sitemap.xml` | ✅ |
@@ -131,62 +129,7 @@ Documents that this is a fully public site requiring no authentication. Lists al
 
 ---
 
-### 8. RFC 8288 Link Response Headers
-
-**File:** `public/_headers` (Cloudflare Pages)
-
-Every response includes 6 separate `Link:` headers (one per resource — not comma-combined, which can be dropped by parsers):
-
-```
-Link: </.well-known/api-catalog>; rel="api-catalog"
-Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
-Link: </llms.txt>; rel="describedby"; type="text/plain"
-Link: </llms-full.txt>; rel="describedby"; type="text/plain"
-Link: </auth.md>; rel="describedby"; type="text/markdown"
-Link: </sitemap.xml>; rel="sitemap"; type="application/xml"
-Vary: Accept
-X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
-```
-
-The same relations are also declared as `<link>` tags in `index.html` `<head>` as an HTML-layer fallback for crawlers that parse DOM instead of inspecting HTTP headers.
-
-Per [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288) (Web Linking) and [RFC 9727 §3](https://www.rfc-editor.org/rfc/rfc9727#section-3).
-
----
-
-### 9. Markdown for Agents — Content Negotiation
-
-**File:** `functions/_middleware.js` (Cloudflare Pages Function)
-
-When an HTTP request includes `Accept: text/markdown`, the middleware intercepts the request and returns `llms-full.txt` content with `Content-Type: text/markdown`. Only applies to SPA page routes (no file extension). Static assets pass through unchanged.
-
-**Implementation notes:**
-- Uses `env.ASSETS.fetch()` (Cloudflare Pages static asset binding) instead of `fetch()` — direct `fetch()` to own origin inside Pages Function middleware creates an unreliable loopback request
-- Falls back to `fetch()` if `env.ASSETS` binding is not available
-- Sets `X-Markdown-Tokens` header (approximate token count at 1 token ≈ 4 chars)
-
-```http
-GET / HTTP/1.1
-Accept: text/markdown
-
-HTTP/1.1 200 OK
-Content-Type: text/markdown; charset=utf-8
-Vary: Accept
-Cache-Control: public, max-age=3600
-X-Content-Source: llms-full.txt
-X-Markdown-Tokens: <approximate-token-count>
-```
-
-**Verify after deploy:**
-```powershell
-curl -sI -H "Accept: text/markdown" https://isratjahankhan.com/
-```
-
-Per [Cloudflare Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/).
-
----
-
-### 10. WebMCP — Browser Agent Tools
+### 8. WebMCP — Browser Agent Tools
 
 **File:** `src/main.tsx`
 
@@ -201,7 +144,7 @@ Per [WebMCP spec](https://webmachinelearning.github.io/webmcp/) and [Chrome WebM
 
 ---
 
-### 11. JSON-LD Structured Data
+### 9. JSON-LD Structured Data
 
 **File:** `index.html`
 
@@ -214,7 +157,7 @@ Schema.org `@graph` in `<head>` includes:
 
 ---
 
-### 12. DNS-AID Records ⚠️ Manual Configuration Required
+### 10. DNS-AID Records ⚠️ Manual Configuration Required
 
 **Standard:** [DNS for AI Discovery (DNS-AID)](https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/)  
 **RFC:** [RFC 9460](https://www.rfc-editor.org/rfc/rfc9460) (SVCB/HTTPS records)
@@ -279,7 +222,7 @@ Or check at `https://dnschecker.org/` — query type `HTTPS`.
 
 ---
 
-### 13. OAuth / OIDC Discovery — N/A
+### 11. OAuth / OIDC Discovery — N/A
 
 This is a fully static public portfolio with no protected APIs, user accounts, or authentication layer. There is nothing to protect with OAuth/OIDC. Implementing `/.well-known/openid-configuration` or `/.well-known/oauth-protected-resource` for a site with no auth would be misleading to agents.
 
@@ -300,7 +243,6 @@ public/
 ├── llms.txt                            # LLM summary (llmstxt.org spec)
 ├── llms-full.txt                       # LLM full content
 ├── sitemap.xml                         # XML sitemap for all routes
-├── _headers                            # Cloudflare Pages response headers (RFC 8288)
 └── .well-known/
     ├── api-catalog                     # RFC 9727 API catalog (application/linkset+json)
     ├── mcp/
@@ -311,9 +253,6 @@ public/
         │   └── SKILL.md               # Skill: get llms.txt
         └── read-full-content/
             └── SKILL.md               # Skill: get llms-full.txt
-
-functions/
-└── _middleware.js                      # Markdown for Agents (Accept: text/markdown)
 
 src/
 └── main.tsx                            # WebMCP navigator.modelContext tools

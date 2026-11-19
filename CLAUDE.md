@@ -10,7 +10,7 @@ Personal academic portfolio website for **Israt Jahan Khan** — prospective PhD
 
 **Live:** [isratjahankhan.com](https://isratjahankhan.com)  
 **Repo:** [github.com/IsratIJK/v3](https://github.com/IsratIJK/v3)  
-**Deployed on:** Vercel (free tier)  
+**Deployed on:** GitHub Pages (`.github/workflows/deploy.yml`)  
 **CDN:** Cloudflare R2 via `cdn.isratjahankhan.com`
 
 ---
@@ -26,9 +26,8 @@ Personal academic portfolio website for **Israt Jahan Khan** — prospective PhD
 | Routing | React Router v6 (lazy-loaded pages) |
 | SEO | react-helmet-async + JSON-LD in index.html |
 | Theming | next-themes (light/dark/system, `class` attribute) |
-| Analytics | Vercel Analytics + Umami (both proxied — see below) |
-| Performance | Vercel Speed Insights (proxied) |
-| Deployment | Vercel |
+| Analytics | Umami (direct script in `index.html`) |
+| Deployment | GitHub Pages |
 
 ---
 
@@ -40,7 +39,7 @@ Only one env var used:
 VITE_CDN_BASE_URL=https://cdn.isratjahankhan.com
 ```
 
-Set in `.env` locally and in Vercel dashboard for production. Referenced in every data file as:
+Set in `.env.development` / `.env.production`. Referenced in every data file as:
 
 ```ts
 const CDN = import.meta.env.VITE_CDN_BASE_URL;
@@ -68,7 +67,7 @@ All routes defined in `src/App.tsx` with `React.lazy` + `<Suspense>`:
 | `/contact` | `src/pages/ContactPage.tsx` | `profile.ts` |
 | `*` | `src/pages/NotFound.tsx` | — |
 
-SPA — Vercel rewrite `"/(.*)" → "/index.html"` catches all routes.
+SPA — `scripts/prerender.mjs` writes `dist/<route>.html` per route and `dist/404.html` as the app shell.
 
 ---
 
@@ -144,7 +143,7 @@ All media served from `cdn.isratjahankhan.com` (Cloudflare R2):
 /documents/               — CV PDF
 ```
 
-CDN is protected by Cloudflare WAF hotlink protection — only requests from `isratjahankhan.com` and `localhost` are allowed (see `docs/cloudflare.md`).
+CDN is protected by Cloudflare WAF hotlink protection — only requests from `isratjahankhan.com` and `localhost` are allowed.
 
 ---
 
@@ -162,7 +161,7 @@ The script is fully automatic — no route list to maintain:
 1. Discovers routes from `<Route path=...>` in `src/App.tsx` (skips `*` and `:param` routes)
 2. Follows each page's static imports to find its source files (page + data files + page-specific components; shell components shared by every route like `Layout`, `Header` are ignored)
 3. `lastmod` = last commit date touching those files (`git log -1`); uncommitted changes → today
-4. Vercel shallow-clones the repo, so the script runs `git fetch --unshallow` first; if that fails, dates landing on the shallow boundary fall back to the previously committed `sitemap.xml` value
+4. If the clone is shallow, the script runs `git fetch --unshallow` first; if that fails, dates landing on the shallow boundary fall back to the previously committed `sitemap.xml` value
 5. Adds `<image:image>` entries from CDN URLs in data files (profile photo, publication/project covers, gallery images/video posters)
 6. Writes `public/sitemap.xml` and `public/sitemap.md` (markdown sitemap for agents; page titles/descriptions come from the `overrides` map)
 
@@ -182,74 +181,27 @@ npm run lint         # ESLint
 
 ---
 
-## Analytics Proxy (Critical)
+## Analytics
 
-All analytics traffic is proxied through the site's own domain to bypass ad blockers. **Do not change these paths — ad blockers target keyword patterns in URLs.**
+Umami only, loaded directly in `index.html` (GitHub Pages has no rewrites, so no proxy; ad blockers will block it):
 
-### Proxy map (`vercel.json` rewrites)
-
-| Browser-visible path | Proxies to | Service |
-|---|---|---|
-| `GET /p/s` | `https://cloud.umami.is/script.js` | Umami script |
-| `POST /p/api/send` | `https://cloud.umami.is/api/send` | Umami events |
-| `GET /a/s.js` | `/_vercel/insights/script.js` | Vercel Analytics script |
-| `POST /a/ev` | `/_vercel/insights` | Vercel Analytics events |
-| `GET /si/s.js` | `/_vercel/speed-insights/script.js` | Speed Insights script |
-| `POST /si/ev` | `/_vercel/speed-insights/vitals` | Speed Insights Web Vitals |
-
-### index.html — Umami
 ```html
-<script defer src="/p/s"
-  data-website-id="27d54e9f-5d1f-42ad-a428-4940406c73c1"
-  data-host-url="/p">
-</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="caa0b135-feb9-4256-9a34-e7ffe1838761" data-domains="isratijk.github.io"></script>
 ```
-`data-host-url` **must be a relative path** (`/p` not `https://isratjahankhan.com/p`). Absolute URL breaks CSP on `www.` variant. See `docs/umami-adblocker-fix.md`.
 
-### src/App.tsx — Vercel Analytics + Speed Insights
-```tsx
-<Analytics scriptSrc="/a/s.js" endpoint="/a/ev" />
-<SpeedInsights scriptSrc="/si/s.js" endpoint="/si/ev" />
-```
+`data-domains` keeps localhost and prerender runs out of the stats.
 
 ---
 
 ## Content Security Policy
 
-Defined in two places (must stay in sync):
-
-1. **`vercel.json`** — `Content-Security-Policy` response header (enforced)
-2. **`index.html`** — `<meta http-equiv="Content-Security-Policy">` (fallback)
-
-Current effective policy:
-```
-default-src 'self';
-script-src 'self';
-style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-font-src 'self' https://fonts.gstatic.com;
-img-src 'self' data: blob: https://cdn.isratjahankhan.com;
-media-src https://cdn.isratjahankhan.com;
-connect-src 'self';
-object-src 'none';
-base-uri 'self';
-form-action 'self';
-frame-ancestors 'none';
-upgrade-insecure-requests
-```
-
-`connect-src 'self'` covers all analytics because they all POST to `/p/api/send`, `/a/ev`, `/si/ev` — same origin. Never add third-party domains back.
-
----
-
-## vercel.json Structure
+Only the `<meta http-equiv="Content-Security-Policy">` in `index.html` applies (GitHub Pages cannot set headers):
 
 ```
-headers  →  cache rules, CSP, security headers, Link headers (RFC 8288)
-rewrites →  analytics proxies (must come before SPA catch-all)
-           SPA catch-all: "/(.*)" → "/index.html" (always last)
+script-src 'self' https://cloud.umami.is;
 ```
 
-Rewrite order matters: Vercel evaluates top-to-bottom. If the SPA catch-all is first, proxy rewrites never fire.
+Any new third-party script must be added to `script-src`.
 
 ---
 
@@ -274,12 +226,6 @@ Rewrite order matters: Vercel evaluates top-to-bottom. If the SPA catch-all is f
 - `.well-known/mcp/server-card.json` — SEP-1649 MCP server card
 
 Full documentation: `AI-AGENT-ACCESSIBILITY.md`
-
-### Cloudflare infrastructure
-Full WAF, rate limiting, cache rules: `docs/cloudflare.md`
-
-### Analytics ad-blocker bypass history
-Root cause analysis + all three incidents: `docs/umami-adblocker-fix.md`
 
 ---
 
