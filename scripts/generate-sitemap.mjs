@@ -114,7 +114,7 @@ function discoverRoutes() {
   return routes;
 }
 
-// Vercel clones with limited depth. In a shallow clone the oldest commit looks like it touched every
+// CI clones can be shallow. In a shallow clone the oldest commit looks like it touched every
 // file, so unchanged pages would all get that commit's date. Fetch full history, or detect the boundary.
 function prepareHistory() {
   if (git("rev-parse --is-inside-work-tree") !== "true") return { ok: false, boundary: new Set() };

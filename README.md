@@ -4,9 +4,8 @@
 >
 > - All media formerly on `cdn.isratjahankhan.com` lives in `public/images/` and `public/pdfs/` (`VITE_CDN_BASE_URL` is set in `.env.production` / `.env.development`).
 > - Site URLs point to `https://isratijk.github.io`.
-> - Vercel Analytics, Speed Insights and the Umami proxy are removed (they need Vercel rewrites).
+> - Analytics is Umami only, loaded directly in `index.html`.
 > - `.github/workflows/deploy.yml` builds and deploys to Pages; `scripts/prerender.mjs` renders every route in headless Chrome to `dist/<route>.html` (full HTML for crawlers and AI agents that don't run JavaScript, with per-page title, description and canonical) and writes the app shell to `dist/404.html`.
-> - `vercel.json`, `functions/` and `public/_headers` are kept but unused on GitHub Pages.
 
 Personal academic portfolio website for **Israt Jahan Khan**, a prospective PhD student and researcher in Machine Learning, Computer Vision, and Artificial Intelligence. M.Sc. student at BRAC University and former Lecturer at United International University, Dhaka, Bangladesh. 
 
@@ -40,10 +39,9 @@ Multi-page academic portfolio showcasing:
 | Routing | [React Router v6](https://reactrouter.com/) |
 | SEO | [react-helmet-async](https://github.com/staylor/react-helmet-async) + JSON-LD structured data |
 | Theming | [next-themes](https://github.com/pacocoursey/next-themes) (light / dark / system) |
-| Analytics | [Vercel Analytics](https://vercel.com/analytics) + [Umami](https://umami.is/) |
-| Performance | [Vercel Speed Insights](https://vercel.com/docs/speed-insights) |
+| Analytics | [Umami](https://umami.is/) |
 | Icons | [Lucide React](https://lucide.dev/) |
-| Deployment | [Vercel](https://vercel.com/) |
+| Deployment | [GitHub Pages](https://pages.github.com/) |
 
 ---
 

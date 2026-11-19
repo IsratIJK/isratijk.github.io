@@ -4,6 +4,10 @@ Architectural and structural changes. Content-only edits (new publications, gall
 
 ## [Unreleased]
 
+### Analytics and Vercel cleanup
+- **Umami** script restored in `index.html`, loaded directly from `cloud.umami.is` (GitHub Pages has no rewrites, so the `/p/` proxy from the Vercel setup is not available). New website ID `caa0b135-…`; `data-domains="isratijk.github.io"` keeps localhost and prerender runs out of the stats. The meta CSP `script-src` now also allows `https://cloud.umami.is`. Ad blockers will block this, unlike the proxied setup.
+- Removed `vercel.json`, `docs/umami-adblocker-fix.md` and the unused `@vercel/analytics` and `@vercel/speed-insights` dependencies. Also removed the Cloudflare Pages files `functions/_middleware.js` and `public/_headers`, and `docs/cloudflare.md`; GitHub Pages cannot set response headers or run middleware.
+
 ### Agent discoverability
 - **`/.well-known/agents.json`** capability manifest. Declares the site as static and read-only: `sources` and `flows` are empty because there is no API, and the description points agents to `llms.txt`, `llms-full.txt`, `sitemap.md`, `AGENTS.md` and the homepage JSON-LD. Listed in `sitemap.md`.
 - `.agents/`, `.claude/` and `skills-lock.json` are no longer tracked and are now in `.gitignore`. They are per-machine editor tooling; they were committed by mistake in 1.0.0.
