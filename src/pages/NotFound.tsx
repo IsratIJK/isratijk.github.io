@@ -1,6 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import Layout from "@/components/Layout";
 
 const NotFound = () => {
   const location = useLocation();
@@ -10,21 +11,22 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <>
+    <Layout className="flex items-center justify-center bg-muted">
       <Helmet>
         <title>Page Not Found | Israt Jahan Khan</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="flex min-h-screen items-center justify-center bg-muted">
-        <div className="text-center">
-          <h1 className="mb-4 text-4xl font-bold">404</h1>
-          <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-          <a href="/" className="text-primary underline hover:text-primary/90 data-[touched=true]:text-primary/90">
-            Return to Home
-          </a>
-        </div>
+      <div className="text-center px-6 py-24">
+        <h1 className="mb-4 text-4xl font-bold">404</h1>
+        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+        <Link
+          to="/"
+          className="text-primary underline underline-offset-4 hover:text-primary/90 data-[touched=true]:text-primary/90"
+        >
+          Return to Home
+        </Link>
       </div>
-    </>
+    </Layout>
   );
 };
 

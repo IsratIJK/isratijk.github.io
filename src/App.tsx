@@ -3,12 +3,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "next-themes";
 import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
 
 const PageLoader = () => (
-  <div className="min-h-screen flex flex-col">
+  <div className="min-h-dvh flex flex-col">
     <Header />
     <main className="flex-1 pt-16 flex items-center justify-center">
-      <div className="w-8 h-8 rounded-full border-2 border-gold border-t-transparent animate-spin" />
+      <div
+        role="status"
+        aria-label="Loading page"
+        className="w-8 h-8 rounded-full border-2 border-gold border-t-transparent opacity-0 animate-[spin_700ms_linear_infinite,fade-in_200ms_var(--ease-out)_200ms_forwards]"
+      />
     </main>
   </div>
 );
@@ -27,8 +32,9 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
   <HelmetProvider>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <BrowserRouter>
+        <ScrollToTop />
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />

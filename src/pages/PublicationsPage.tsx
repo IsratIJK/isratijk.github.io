@@ -5,7 +5,6 @@ import {
   FileText,
   BookOpen,
   Download,
-  X,
 } from "lucide-react";
 
 const quartileStyles: Record<string, string> = {
@@ -85,7 +84,7 @@ const AbstractDialog = ({
   onClose: () => void;
 }) => (
   <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-    <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+    <DialogContent aria-describedby={undefined} className="max-w-2xl max-h-[85dvh] overflow-y-auto">
       <DialogHeader>
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <span className="font-mono text-xs font-bold text-gold">{pub.year}</span>
@@ -395,6 +394,7 @@ const PublicationsPage = () => {
                   <button
                     key={f}
                     onClick={() => setFilter(f)}
+                    aria-pressed={filter === f}
                     className={`px-4 py-1.5 rounded-lg text-sm font-medium transition active:scale-[0.97] ${
                       filter === f
                         ? "bg-background text-foreground shadow-soft"

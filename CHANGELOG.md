@@ -4,6 +4,21 @@ Architectural and structural changes. Content-only edits (new publications, gall
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-11-20
+
+### Polish and accessibility
+- **Scroll reset on navigation.** New `src/components/ScrollToTop.tsx`, mounted inside `BrowserRouter`, scrolls to the top (instantly, bypassing the global smooth scroll) on every route change, or to the `#hash` target when one exists. Previously a new page opened at the old page's scroll offset.
+- **Theme switch.** `ThemeProvider` uses `disableTransitionOnChange`, so every surface changes at once instead of elements with `transition-colors` fading while the rest snap.
+- **Mobile viewport.** `min-h-screen`, `100vh` and `85vh` replaced with `dvh` equivalents in `Layout`, the home hero, the route loader and the publication/project dialogs, so nothing overshoots while the mobile URL bar is visible.
+- **Route loader.** The spinner fades in after 200ms (no flash on fast loads), spins at 700ms and has `role="status"`.
+- **404 page.** Renders inside `Layout` (header and footer) and returns home with a router `Link` instead of a full page reload.
+- **Gallery.** Removed the lightbox's duplicate close button (the dialog's own is kept) and gave it a screen-reader title. Category changes now fade like pagination does; the active pill still updates immediately.
+- **Keyboard and screen readers.** Skip-to-content link and `#main` landmark in `Layout`; `aria-current="page"` on nav links; `aria-pressed` on the gallery and publication filters; `aria-controls`/`aria-expanded` on the mobile menu, which also closes on Escape; labelled theme toggle placeholder. Dialogs pass `aria-describedby={undefined}` to silence Radix's missing-description warning.
+- **Header.** Passive scroll listener, scrolled state synced on mount (reloading mid-page no longer shows the transparent home header), route chunks preload on focus and touch as well as hover.
+- **Global CSS.** Consistent `:focus-visible` ring, `scroll-padding-top` so anchored sections clear the fixed header, `text-wrap: pretty` on paragraphs.
+- **Contact.** The email address wraps inside its card instead of overflowing at narrow widths.
+- **Brand icons.** `Github` and `Linkedin` are deprecated in `lucide-react` (removed in v1). New `src/components/BrandIcons.tsx` defines `GithubIcon` and `LinkedinIcon` with `createLucideIcon` using the same paths, so they look and size identically and accept the same props. Also removed an unused import in `PublicationsPage.tsx` and a conflicting `block`/`flex` pair in `GalleryPage.tsx`.
+
 ### Analytics and Vercel cleanup
 - **Umami** script restored in `index.html`, loaded directly from `cloud.umami.is` (GitHub Pages has no rewrites, so the `/p/` proxy from the Vercel setup is not available). New website ID `caa0b135-…`; `data-domains="isratijk.github.io"` keeps localhost and prerender runs out of the stats. The meta CSP `script-src` now also allows `https://cloud.umami.is`. Ad blockers will block this, unlike the proxied setup.
 - Removed `vercel.json`, `docs/umami-adblocker-fix.md` and the unused `@vercel/analytics` and `@vercel/speed-insights` dependencies. Also removed the Cloudflare Pages files `functions/_middleware.js` and `public/_headers`, and `docs/cloudflare.md`; GitHub Pages cannot set response headers or run middleware.

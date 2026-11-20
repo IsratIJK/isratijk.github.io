@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import { Github, ExternalLink, Code2, BookOpen } from "lucide-react";
+import { ExternalLink, Code2, BookOpen } from "lucide-react";
+import { GithubIcon } from "@/components/BrandIcons";
 import {
   Dialog,
   DialogContent,
@@ -47,7 +48,7 @@ const ProjectDetailDialog = ({
   onClose: () => void;
 }) => (
   <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-    <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+    <DialogContent aria-describedby={undefined} className="max-w-2xl max-h-[85dvh] overflow-y-auto">
       <DialogHeader>
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <span className="font-mono text-xs text-muted-foreground">{project.category}</span>
@@ -105,7 +106,7 @@ const ProjectDetailDialog = ({
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-foreground text-background text-xs font-medium hover:bg-foreground/85 data-[touched=true]:bg-foreground/85 transition active:scale-[0.97]"
             >
-              <Github size={13} />
+              <GithubIcon size={13} />
               GitHub
             </a>
           )}
@@ -204,7 +205,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground transition-colors"
               aria-label={`View ${project.title} on GitHub`}
             >
-              <Github size={15} />
+              <GithubIcon size={15} />
               GitHub
             </a>
           )}
@@ -264,7 +265,7 @@ const ProjectsPage = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-gold text-gold text-sm font-medium hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
           >
-            <Github size={14} />
+            <GithubIcon size={14} />
             GitHub Profile
           </a>
         }
@@ -286,7 +287,7 @@ const ProjectsPage = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gold text-gold font-medium text-sm hover:bg-gold data-[touched=true]:bg-gold hover:text-gold-foreground data-[touched=true]:text-gold-foreground transition active:scale-[0.97]"
               >
-                <Github size={16} />
+                <GithubIcon size={16} />
                 View All on GitHub
               </a>
             </div>
