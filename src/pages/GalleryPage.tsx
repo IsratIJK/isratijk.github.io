@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { X, ChevronLeft, ChevronRight, Play, Images } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, Play, Images } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { gallery, galleryCategories, type GalleryItem, type GalleryCategory } from "@/data/gallery";
@@ -15,7 +15,7 @@ const GalleryImage = ({ item, onClick }: { item: GalleryItem; onClick: () => voi
     return (
       <button
         onClick={onClick}
-        className="group relative w-full overflow-hidden rounded-xl bg-muted block aspect-[4/3] cursor-zoom-in flex flex-col items-center justify-center"
+        className="group relative w-full overflow-hidden rounded-xl bg-muted aspect-[4/3] cursor-zoom-in flex flex-col items-center justify-center"
         aria-label={`View ${item.title}`}
       >
         <div className="w-10 h-10 rounded-xl bg-gold/15 flex items-center justify-center mb-2">
@@ -124,25 +124,22 @@ const Lightbox = ({
 
   return (
     <Dialog open={index !== null} onOpenChange={(v) => !v && onClose()}>
-      <DialogContent className="max-w-5xl w-full p-0 overflow-hidden bg-zinc-950 border-white/10 gap-0">
+      <DialogContent
+        aria-describedby={undefined}
+        className="max-w-5xl w-full p-0 overflow-hidden bg-zinc-950 border-white/10 gap-0"
+      >
         {item && (
           <>
-            {/* Top bar */}
-            <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
+            <DialogTitle className="sr-only">{item.title}</DialogTitle>
+            {/* Top bar — the dialog's own close button sits at the right edge */}
+            <div className="flex items-center justify-between pl-5 pr-16 py-3 border-b border-white/10 min-h-[3.25rem]">
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs text-gold">{item.category}</span>
                 <span className="text-white/30 text-xs">·</span>
-                <span className="text-white/45 text-xs font-mono">
+                <span className="text-white/45 text-xs font-mono tabular-nums">
                   {(index as number) + 1} / {items.length}
                 </span>
               </div>
-              <button
-                onClick={onClose}
-                className="w-8 h-8 rounded-lg bg-white/8 hover:bg-white/15 data-[touched=true]:bg-white/15 flex items-center justify-center transition-colors active:scale-[0.97]"
-                aria-label="Close"
-              >
-                <X size={16} className="text-white/70" />
-              </button>
             </div>
 
             {/* Media area */}
@@ -209,17 +206,21 @@ const ITEMS_PER_PAGE = 6;
 
 const GalleryPage = () => {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>("All");
+  const [shownCategory, setShownCategory] = useState<GalleryCategory>("All");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const gridTopRef = useRef<HTMLDivElement>(null);
+  const categoryTimer = useRef<number>();
+
+  useEffect(() => () => window.clearTimeout(categoryTimer.current), []);
 
   const sorted = [...gallery].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   const filtered =
-    activeCategory === "All" ? sorted : sorted.filter((item) => item.category === activeCategory);
+    shownCategory === "All" ? sorted : sorted.filter((item) => item.category === shownCategory);
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
   const paginatedItems = filtered.slice(
@@ -229,7 +230,18 @@ const GalleryPage = () => {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [activeCategory]);
+  }, [shownCategory]);
+
+  const changeCategory = (cat: GalleryCategory) => {
+    if (cat === activeCategory) return;
+    setActiveCategory(cat);
+    setIsTransitioning(true);
+    window.clearTimeout(categoryTimer.current);
+    categoryTimer.current = window.setTimeout(() => {
+      setShownCategory(cat);
+      setIsTransitioning(false);
+    }, 150);
+  };
 
   const changePage = (page: number) => {
     if (page === currentPage || page < 1 || page > totalPages) return;
@@ -284,7 +296,8 @@ const GalleryPage = () => {
                 return (
                   <button
                     key={cat}
-                    onClick={() => setActiveCategory(cat)}
+                    onClick={() => changeCategory(cat)}
+                    aria-pressed={activeCategory === cat}
                     className={`px-4 py-1.5 rounded-lg text-sm font-medium transition active:scale-[0.97] ${
                       activeCategory === cat
                         ? "bg-background text-foreground shadow-soft"

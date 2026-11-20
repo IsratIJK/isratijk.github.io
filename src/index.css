@@ -156,7 +156,22 @@ img {
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
     -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  [role="dialog"]:focus-visible {
+    outline: none;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   body {

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Mail, FileText, MapPin, ArrowRight, BookOpen, Github, ExternalLink } from "lucide-react";
+import { Mail, FileText, MapPin, ArrowRight, BookOpen, ExternalLink } from "lucide-react";
+import { GithubIcon } from "@/components/BrandIcons";
 import Layout from "@/components/Layout";
 import { profile } from "@/data/profile";
 import { publications } from "@/data/publications";
@@ -72,7 +73,7 @@ const Home = () => {
     <Layout>
       {/* ── Hero ── */}
       <section
-        className="relative min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-dvh flex items-center overflow-hidden"
         aria-label="Introduction"
       >
         <div className="absolute inset-0 bg-dot-grid opacity-50" />
@@ -80,7 +81,7 @@ const Home = () => {
         <div className="absolute top-1/2 -left-40 w-[400px] h-[400px] rounded-full bg-gold/4 blur-3xl pointer-events-none" />
 
         <div className="container relative mx-auto px-6">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center min-h-[calc(100vh-4rem)]">
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center min-h-[calc(100dvh-4rem)]">
             {/* Left */}
             <div className="lg:col-span-3 order-2 lg:order-1 py-12 lg:py-0">
               <div className="flex items-center gap-3 mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0ms" }}>
@@ -289,7 +290,7 @@ const Home = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground transition-colors"
                       >
-                        <Github size={13} /> GitHub
+                        <GithubIcon size={13} /> GitHub
                       </a>
                     )}
                     {project.demo && (
@@ -370,7 +371,7 @@ const ProjectCoverImage = ({ project }: { project: (typeof projects)[0] }) => {
         className="placeholder-content hidden flex-col items-center justify-center w-full h-full bg-gradient-to-br from-muted to-muted/60 absolute inset-0"
       >
         <div className="w-10 h-10 rounded-xl bg-gold/15 flex items-center justify-center mb-2">
-          <Github size={18} className="text-gold/70" />
+          <GithubIcon size={18} className="text-gold/70" />
         </div>
         <span className="text-xs font-mono text-muted-foreground">{project.category}</span>
       </div>

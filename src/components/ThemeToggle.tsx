@@ -12,7 +12,10 @@ const ThemeToggle = () => {
 
   if (!mounted) {
     return (
-      <button className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground">
+      <button
+        aria-label="Toggle theme"
+        className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground"
+      >
         <Sun size={16} />
       </button>
     );
@@ -26,7 +29,7 @@ const ThemeToggle = () => {
       className="w-8 h-8 rounded-lg flex items-center justify-center text-muted-foreground hover:text-foreground data-[touched=true]:text-foreground hover:bg-muted data-[touched=true]:bg-muted transition duration-200 active:scale-[0.97]"
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {isDark ? <Sun size={16} /> : <Moon size={16} />}
+      {isDark ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
     </button>
   );
 };

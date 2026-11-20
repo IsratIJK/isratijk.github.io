@@ -36,7 +36,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -48,6 +49,15 @@ const Header = () => {
   const closeMobileMenu = () => {
     setIsClosing(true);
   };
+
+  useEffect(() => {
+    if (!isMobileMenuOpen || isClosing) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsClosing(true);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [isMobileMenuOpen, isClosing]);
 
   const isActive = (to: string) => location.pathname === to;
   const isHome = location.pathname === "/";
@@ -78,7 +88,9 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
+              aria-current={isActive(link.to) ? "page" : undefined}
               onMouseEnter={() => routePreloads[link.to]?.()}
+              onFocus={() => routePreloads[link.to]?.()}
               className={`relative px-3.5 py-2 text-sm font-body font-medium transition-colors duration-200 rounded-lg ${
                 isActive(link.to)
                   ? "text-gold bg-gold/8"
@@ -108,7 +120,8 @@ const Header = () => {
             className="p-2 text-foreground rounded-lg hover:bg-muted data-[touched=true]:bg-muted transition-colors active:scale-[0.97]"
             onClick={() => isMobileMenuOpen ? closeMobileMenu() : setIsMobileMenuOpen(true)}
             aria-label="Toggle menu"
-            aria-expanded={isMobileMenuOpen}
+            aria-expanded={isMobileMenuOpen && !isClosing}
+            aria-controls="mobile-nav"
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -123,6 +136,7 @@ const Header = () => {
             aria-hidden="true"
           />
           <nav
+            id="mobile-nav"
             className={`xl:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-page ${isClosing ? "animate-menu-out" : "animate-menu-in"}`}
             aria-label="Mobile navigation"
             onAnimationEnd={() => {
@@ -137,7 +151,9 @@ const Header = () => {
                 <Link
                   key={link.to}
                   to={link.to}
+                  aria-current={isActive(link.to) ? "page" : undefined}
                   onMouseEnter={() => routePreloads[link.to]?.()}
+                  onTouchStart={() => routePreloads[link.to]?.()}
                   className={`px-4 py-3 rounded-xl font-body font-medium transition-colors text-sm ${
                     isActive(link.to)
                       ? "text-gold bg-gold/8 font-semibold"

@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
-import { Mail, MapPin, Linkedin, Github, GraduationCap, IdCard, BookOpen } from "lucide-react";
+import { Mail, MapPin, GraduationCap, IdCard, BookOpen } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/BrandIcons";
 import Layout from "@/components/Layout";
 import PageHero from "@/components/PageHero";
 import { profile } from "@/data/profile";
@@ -8,13 +9,13 @@ const socialConfig = [
   {
     key: "linkedin",
     label: "LinkedIn",
-    icon: Linkedin,
+    icon: LinkedinIcon,
     description: "Connect professionally",
   },
   {
     key: "github",
     label: "GitHub",
-    icon: Github,
+    icon: GithubIcon,
     description: "View code and projects",
   },
   {
@@ -81,15 +82,15 @@ const ContactPage = () => {
                     <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 group-data-[touched=true]:bg-gold/20 transition-colors flex-shrink-0">
                       <Mail size={18} className="text-gold" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-0.5">
                         Email
                       </p>
-                      <p className="text-sm font-medium text-foreground group-hover:text-gold group-data-[touched=true]:text-gold transition-colors">
+                      <p className="text-sm font-medium text-foreground group-hover:text-gold group-data-[touched=true]:text-gold transition-colors [overflow-wrap:anywhere]">
                         {profile.email}
                       </p>
                     </div>
-                    <span className="ml-auto text-muted-foreground group-hover:text-gold group-data-[touched=true]:text-gold transition-colors">→</span>
+                    <span className="flex-shrink-0 text-muted-foreground group-hover:text-gold group-data-[touched=true]:text-gold transition-colors">→</span>
                   </a>
 
                   <div className="flex items-center gap-4 p-4 rounded-xl border border-border/40 bg-cream">
